@@ -1,0 +1,4 @@
+﻿InternalName	ParamType
+OperatingParameter1	ExistingDirectory
+OperatingParameter2	ExistingFile
+OperatingParameter3	NewFile

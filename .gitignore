@@ -259,3 +259,6 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+
+# 2019/06/27 11:13:14 - Local repository backups and links to same
+OperatingParameters_Demo_ABACUS_*
