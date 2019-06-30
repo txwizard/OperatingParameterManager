@@ -3,9 +3,9 @@
 
     Namespace:			OperatingParameters_Demo
 
-    Class Name:			OperatingParameterBase
+    Class Name:			Utl
 
-	File Name:			OperatingParameterBase.cs
+	File Name:			Utl.cs
 
     Synopsis:			Store and manage an operating parameter and properties,
 						such as the type of data stored therein and its expected
@@ -63,6 +63,10 @@
     2019/06/29 1.0.3   DAG    Add missing XML documentation in preparation for
                               publication in a documented GitHub repository and
                               as a NuGet package.
+
+    2019/06/30 1.0.6   DAG    Correct typographical errors and add clarification
+                              to the XML documentation islands and this flower
+                              box.
     ============================================================================
 */
 
@@ -86,7 +90,7 @@ namespace WizardWrx.OperatingParameterManager
     /// <summary>
     /// This static class exposes utility methods that are intended for internal
     /// use. Since some of these may be useful in their own right, the class is
-    /// marked public.
+    /// marked as public.
     /// </summary>
 	public static class Utl
 	{

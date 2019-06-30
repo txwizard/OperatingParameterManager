@@ -6,7 +6,7 @@ Within each version, classes are covered in alphabetical order when applicable.
 
 Detailed API documentation is at <https://txwizard.github.io/OperatingParameterManager/>.
 
-## Version 1.0.5, released 2019/06/30
+## Version 1.0.6, released 2019/06/30
 
 This build clears compiler warnings that arose in conjunction with enabling the
 generation of XML documentation of the library. Apart from eliminating a few

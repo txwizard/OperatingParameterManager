@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>FooBar API </title>
+    <title>WizardWrx.OperatingParameterManager API </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="FooBar API ">
+    <meta name="title" content="WizardWrx.OperatingParameterManager API ">
     <meta name="generator" content="docfx 2.40.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -67,15 +67,65 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="foobar-api">FooBar API</h1>
+<h1 id="wizardwrxoperatingparametermanager-api">WizardWrx.OperatingParameterManager API</h1>
 
-<p>The following sections summarize the classes in each namespace. Unless indicated
-otherwise, each class is exposed by a library of the same name as the namespace.
-To use them, add a reference to the indicated library, and add a using directive
-that specifies the corresponding namespace to any module that references it.</p>
+<p>The following sections summarize the classes exposed by this library, all of
+which belong to the <code>WizardWrx.OperatingParameterManager</code> namespace. Unless</p>
 <p>Use the links in the table of contents along the left side of this page to view
 the documentation a namespace.</p>
-<h2 id="wizardwrx-the-root-namespace">WizardWrx: The Root Namespace</h2>
+<h2 id="class-appsettingsforentryassembly">Class AppSettingsForEntryAssembly</h2>
+<p>The AppSettingsForEntryAssembly class exposes the Application Settings of the
+entry assembly as a basis from which to establish default values of a set of
+program parameters.</p>
+<p>This class is implemented as a Singleton by inheriting the GenericSingletonBase
+class exposed by the WizardWrx namespace through WizardWrx.Core.dll.</p>
+<h2 id="class-operatingparameter">Class OperatingParameter</h2>
+<p>This class is a concrete instance that implements abstract method IsValueValid
+for generic type T = ParameterType.</p>
+<p>Type <strong>T</strong> is expected to be an enumeration that corresponds to the rules for
+evaluating parameters (e. g., the parameter must be the name of an existing
+file, the paraameter must be a valid file name, but the file must not exist,
+the parameter must be the name of an existing directory.</p>
+<p>All ParameterTypeInfo constructors MUST specify the same type of enumeration, as
+must the OperatingParameters that go into the OperatingParametersCollection.
+Otherwise, the behavior of the OperatingParameters collection and its members is
+undefined.</p>
+<p>Type <strong>U</strong> is expected to be an emumeration that corresponds to the source from
+which the parameter's value originated. This is used internally to identify the
+source, e. g., ApplicationSettings or CommandLine, for reporting purposes and
+for preserving a default value read from one source, and overridden by a second
+source.</p>
+<p>The <code>OperatingParameters</code> objects that go into the <code>OperatingParametersCollection</code>
+singleton <strong>must</strong> specify the same generic type. Otherwise, the behavior of the
+<code>OperatingParameters</code> collection and its members is undefined.</p>
+<h2 id="class-operatingparameterbase">Class OperatingParameterBase</h2>
+<p>This abstract class defines a generic <code>OperatingParameter</code> object. Though generic
+classes are implicitly abstract, they are seldom so marked.</p>
+<p>However, since its <code>IsValueValid</code> method is generic, and its implementation is so
+tightly coupled to the properties of the resolved generic type that its
+implementation must be left to the concrete derived class.</p>
+<h2 id="class-operatingparameterscollection">Class OperatingParametersCollection</h2>
+<p>This class defines a collection of <code>OperatingParameters</code> objects that are stored
+in a generic Dictionary that is keyed by the name of each parameter.</p>
+<p>The idea behind the collection is that parameters are loaded into it, validated,
+and subsequently called forth as needeed by the program, providing thereby an
+easily extensible in-memory store for its operating parameters.</p>
+<p>Since an application needs at most one collection of operating parameters, this
+object is implemented as a Singleton, so that your program isn't littered with
+multiple copies of its parameters, nor does it waste time processing them more
+than once.</p>
+<h2 id="class-parametertypeinfo">Class ParameterTypeInfo</h2>
+<p>This class maps the columns of a table of parameter type properties and their
+values to the properties of an instance of itself. The properties of a set of
+parameters are expected to be read into instances of this class, one instance
+per row, from an input file, with the objective of making addition of parameters
+easier by storing their basic attributes in a file, which may exist either as a
+text file in the file system or an embedded resource in the application
+assembly.</p>
+<h2 id="class-utl">Class Utl</h2>
+<p>This static class exposes utility methods that are intended for internal use.
+Since some of these may be useful in their own right, the class is marked as
+public.</p>
 </article>
           </div>
           

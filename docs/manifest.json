@@ -12,7 +12,7 @@
           "hash": "BoeLrl7jBj7TP8grmtCr4A=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -24,7 +24,7 @@
           "hash": "OOoIgl7UYV5ErD14SIPxtg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -36,7 +36,7 @@
           "hash": "UmgMsYWUlZKp7lX4nuEMZw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -45,7 +45,7 @@
       "output": {
         ".html": {
           "relative_path": "api/WizardWrx.OperatingParameterManager.AppSettingsForEntryAssembly.html",
-          "hash": "YE9tTqCJypW8wreHZtvtmw=="
+          "hash": "osifFuz5mAcRBaIs6+902Q=="
         }
       },
       "is_incremental": false,
@@ -60,7 +60,7 @@
           "hash": "JUyxMXW011SaWpE9DlhpGw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -72,7 +72,7 @@
           "hash": "58Nbmr1v8y8A7pAkOrFirg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -84,7 +84,7 @@
           "hash": "JI9o+295St5edbcvAQnSMg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -96,7 +96,7 @@
           "hash": "mFjWNREVWkKmStXVwnaJhw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -108,7 +108,7 @@
           "hash": "jFceMwhJFlZsLlKWtX2hYw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -120,7 +120,7 @@
           "hash": "Oo1JBQX3TmXhBmUwA+m+Dw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -132,7 +132,7 @@
           "hash": "extNOlshkE30qgOu8OUbhQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -141,7 +141,7 @@
       "output": {
         ".html": {
           "relative_path": "api/WizardWrx.OperatingParameterManager.Utl.html",
-          "hash": "meWsItmP0n0TVQ2QLQJHEQ=="
+          "hash": "SUJUwzCA9t5sg6Y7Yzg97Q=="
         }
       },
       "is_incremental": false,
@@ -153,7 +153,7 @@
       "output": {
         ".html": {
           "relative_path": "api/WizardWrx.OperatingParameterManager.html",
-          "hash": "zdhIWjOZAMMQ/9N2CkNN+Q=="
+          "hash": "/JU+JUMN7hM1KAtw5MwaIQ=="
         }
       },
       "is_incremental": false,
@@ -165,7 +165,7 @@
       "output": {
         ".html": {
           "relative_path": "api/index.html",
-          "hash": "d7nclhXwc66CDoif1NAKog=="
+          "hash": "4YhnCOa+jqzJ1pu+16k5Dw=="
         }
       },
       "is_incremental": false,
@@ -192,7 +192,7 @@
           "hash": "FsHyr8N7UX2C7AHpD6jikQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -209,11 +209,23 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "index(0).md",
+      "output": {
+        ".html": {
+          "relative_path": "index(0).html",
+          "hash": "Y/pnciwfKgchmQK+fEFf8w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "index.md",
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "dbeol1kvRDiiv4FxOG2lpw=="
+          "hash": "1+OL43xTY8Wfm5WKvOSuvg=="
         }
       },
       "is_incremental": false,
@@ -235,8 +247,7 @@
   "incremental_info": [
     {
       "status": {
-        "can_incremental": false,
-        "details": "Cannot build incrementally because last build info is missing.",
+        "can_incremental": true,
         "incrementalPhase": "build"
       },
       "processors": {
@@ -246,19 +257,19 @@
           "incrementalPhase": "build"
         },
         "ManagedReferenceDocumentProcessor": {
-          "can_incremental": false,
+          "can_incremental": true,
           "incrementalPhase": "build"
         },
         "ConceptualDocumentProcessor": {
-          "can_incremental": false,
+          "can_incremental": true,
           "incrementalPhase": "build"
         }
       }
     },
     {
       "status": {
-        "can_incremental": false,
-        "details": "Cannot support incremental post processing, the reason is: last post processor info is null.",
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
         "incrementalPhase": "postProcessing"
       },
       "processors": {}

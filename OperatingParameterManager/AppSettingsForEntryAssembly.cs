@@ -64,6 +64,9 @@
     2019/06/29 1.0.3   DAG    Add missing XML documentation in preparation for
                               publication in a documented GitHub repository and
                               as a NuGet package.
+
+    2019/06/30 1.0.6   DAG    Correct typographical errors and add clarification
+                              to the XML documentation islands.
     ============================================================================
 */
 
@@ -78,8 +81,9 @@ namespace WizardWrx.OperatingParameterManager
     /// of a set of program parameters.
     /// </summary>
     /// <remarks>
-    /// This class is implemented is implemented as a Singleton by inheriting my
-    /// GenericSingletonBase class.
+    /// This class is implemented as a Singleton by inheriting the
+    /// GenericSingletonBase class exposed by the WizardWrx namespace through
+    /// WizardWrx.Core.dll.
     /// </remarks>
 	public class AppSettingsForEntryAssembly : GenericSingletonBase<AppSettingsForEntryAssembly>
 	{
