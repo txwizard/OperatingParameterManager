@@ -16,7 +16,7 @@
 
     Author:				David A. Gray
 
-	License:            Copyright (C) 2018, David A. Gray.
+	License:            Copyright (C) 2018-2019, David A. Gray.
 						All rights reserved.
 
                         Redistribution and use in source and binary forms, with
@@ -60,6 +60,10 @@
     ---------- ------- ------ --------------------------------------------------
 	2018/08/31 1.0     DAG    Initial implementation created, tested, and 
                               deployed.
+
+    2019/06/29 1.0.3   DAG    Add missing XML documentation in preparation for
+                              publication in a documented GitHub repository and
+                              as a NuGet package.
     ============================================================================
 */
 
@@ -68,9 +72,41 @@ using System.Configuration;
 
 namespace WizardWrx.OperatingParameterManager
 {
+    /// <summary>
+    /// The AppSettingsForEntryAssembly class exposes the Application Settings
+    /// of the entry assembly as a basis from which to establish default values
+    /// of a set of program parameters.
+    /// </summary>
+    /// <remarks>
+    /// This class is implemented is implemented as a Singleton by inheriting my
+    /// GenericSingletonBase class.
+    /// </remarks>
 	public class AppSettingsForEntryAssembly : GenericSingletonBase<AppSettingsForEntryAssembly>
 	{
-		public static AppSettingsForEntryAssembly GetTheSingleInstance ( System.Configuration.SettingsPropertyCollection psettingsPropertyValueCollection )
+        /// <summary>
+        /// By convention, all Singleton objects are acquired by calling static
+        /// method GetTheSingleInstance, which returns a reference to the only
+        /// instance of the class that allowed to exist in the scope of an
+        /// application.
+        /// </summary>
+        /// <param name="psettingsPropertyValueCollection">
+        /// The first call to this method binds the singleton to the
+        /// System.Configuration.SettingsPropertyCollection of the entry
+        /// assembly. Subsequent calls ignore this paramter, returning the
+        /// initialized instance that was created and returned by the first
+        /// call.
+        /// 
+        /// Since this parameter is ingored on all but the first call, it may be
+        /// null on subsequent calls. For this to work as expected, your design
+        /// must guarantee that the first call passes the
+        /// SettingsPropertyCollection of the entry assembly.
+        /// </param>
+        /// <returns>
+        /// All calls return an AppSettingsForEntryAssembly instance that was
+        /// initialized with the SettingsPropertyCollection of the entry
+        /// assembly.
+        /// </returns>
+		public static AppSettingsForEntryAssembly GetTheSingleInstance ( SettingsPropertyCollection psettingsPropertyValueCollection )
 		{
 			lock ( s_srCriticalSection )
 				if ( s_appSettingsForEntryAssembly == null )
@@ -84,12 +120,6 @@ namespace WizardWrx.OperatingParameterManager
 		/// List all Application Settings values on the Standard Output stream
 		/// of a console application.
 		/// </summary>
-		/// <param name="ptheApp">
-		/// The application's base name is extracted for use in the report
-		/// from the BaseStateManager singleton exposed by the specified 
-		/// reference to the WizardWrx.ConsoleAppAids3.ConsoleAppStateManager
-		/// singleton.
-		/// </param>
 		public void ListAllAppSettings ( )
 		{
 			Console.WriteLine (
@@ -98,7 +128,7 @@ namespace WizardWrx.OperatingParameterManager
 				Environment.NewLine );                                          // Format Item 1: platform-dependent newline
 			int intItemNumber = ListInfo.LIST_IS_EMPTY;
 
-			foreach ( System.Configuration.SettingsProperty settingsProperty in _settingsPropertyValueCollection )
+			foreach ( SettingsProperty settingsProperty in _settingsPropertyValueCollection )
 			{
 				Console.WriteLine (
 					Properties.Resources.MESSAGE_APPSETTING_VALUE ,             // Format Control String: AppSetting # {0,2}: Name         = {1}{4}               PropertyType = {2}{4}               DefaultValue = {3}{4}

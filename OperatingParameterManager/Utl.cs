@@ -15,7 +15,7 @@
 
     Author:				David A. Gray
 
-	License:            Copyright (C) 2018, David A. Gray.
+	License:            Copyright (C) 2018-2019, David A. Gray.
 						All rights reserved.
 
                         Redistribution and use in source and binary forms, with
@@ -59,8 +59,13 @@
     ---------- ------- ------ --------------------------------------------------
 	2018/09/02 1.0     DAG    Initial implementation created, tested, and 
                               deployed.
+
+    2019/06/29 1.0.3   DAG    Add missing XML documentation in preparation for
+                              publication in a documented GitHub repository and
+                              as a NuGet package.
     ============================================================================
 */
+
 
 using System;
 using System.Collections;
@@ -78,6 +83,11 @@ using WizardWrx.FormatStringEngine;
 
 namespace WizardWrx.OperatingParameterManager
 {
+    /// <summary>
+    /// This static class exposes utility methods that are intended for internal
+    /// use. Since some of these may be useful in their own right, the class is
+    /// marked public.
+    /// </summary>
 	public static class Utl
 	{
 		/// <summary>
@@ -144,11 +154,11 @@ namespace WizardWrx.OperatingParameterManager
 		{
 			const string DEFAULT_STRING_RESOURCE_NAME = @"resources";
 
-			if ( string.IsNullOrEmpty ( pstrStringName ) )
-				throw new ArgumentNullException ( @"pstrStringName" );
+            if ( string.IsNullOrEmpty ( pstrStringName ) )
+                throw new ArgumentNullException ( nameof ( pstrStringName ) );
 
-			if ( pasmAny == null )
-				throw new ArgumentNullException ( @"pasmAny" );
+            if ( pasmAny == null )
+                throw new ArgumentNullException ( nameof ( pasmAny ) );
 
 			if ( pasmAny.GetManifestResourceNames ( ).Length > ListInfo.LIST_IS_EMPTY )
 			{   // The assembly contains SOME embedded resourcess, though not necessarily strings.
@@ -157,7 +167,7 @@ namespace WizardWrx.OperatingParameterManager
 				#endif // #if UTL_DEBUG
 
 				using ( Stream strOfResources = pasmAny.GetManifestResourceStream (
-					WizardWrx.AssemblyUtils.SortableManagedResourceItem.GetInternalResourceName (
+					AssemblyUtils.SortableManagedResourceItem.GetInternalResourceName (
 						DEFAULT_STRING_RESOURCE_NAME ,
 						pasmAny ) ) )
 				{   // Unless the assembly is devoid of string resources, perform a brute force scan of the list of names.

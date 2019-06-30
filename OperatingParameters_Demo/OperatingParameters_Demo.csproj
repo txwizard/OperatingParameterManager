@@ -116,10 +116,11 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>wwBldNbrMgr.exe "$(ProjectDir) "</PreBuildEvent>
+    <PreBuildEvent>AssemblyInfoUtil.exe "$(ProjectDir)Properties\AssemblyInfo.cs" -inc:3 -fv</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>wwBldNbrMgr.exe -r "-p$(ProjectDir) " "-t$(TargetPath)"
+    <PostBuildEvent>ShowVer.exe "$(ProjectDir)bin\$(ConfigurationName)\$(TargetFileName)"
+WWDisplayAssemblyInfo.exe "$(ProjectDir)bin\$(ConfigurationName)\$(TargetFileName)"
 if exist       "$(SolutionDir)$(SolutionName)_Binaries_$(ConfigurationName).7z" sdelete -r "$(SolutionDir)$(SolutionName)_Binaries_$(ConfigurationName).7z"
 7z a -bb3 -stl "$(SolutionDir)$(SolutionName)_Binaries_$(ConfigurationName).7z" "$(SolutionDir)$(ProjectName)\bin\$(ConfigurationName)\*"
 7z l           "$(SolutionDir)$(SolutionName)_Binaries_$(ConfigurationName).7z"

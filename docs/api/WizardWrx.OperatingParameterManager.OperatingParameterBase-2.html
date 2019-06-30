@@ -1,0 +1,1076 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class OperatingParameterBase&lt;T, U&gt;
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class OperatingParameterBase&lt;T, U&gt;
+   ">
+    <meta name="generator" content="docfx 2.40.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="WizardWrx.OperatingParameterManager.OperatingParameterBase`2">
+  
+  
+  <h1 id="WizardWrx_OperatingParameterManager_OperatingParameterBase_2" data-uid="WizardWrx.OperatingParameterManager.OperatingParameterBase`2" class="text-break">Class OperatingParameterBase&lt;T, U&gt;
+  </h1>
+  <div class="markdown level0 summary"><p>This abstract class defines a generic OperatingParameter object. Though
+generic classes are implicitly abstract, they are seldom so marked.</p>
+<p>However, since its IsValueValid method is generic, and its
+implementation is so tightly coupled to the properties of the resolved
+generic type that its implementation must be left to the concrete
+derived class.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">OperatingParameterBase&lt;T, U&gt;</span></div>
+      <div class="level2"><a class="xref" href="WizardWrx.OperatingParameterManager.OperatingParameter-2.html">OperatingParameter&lt;T, U&gt;</a></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.IComparable</span>&lt;<a class="xref" href="WizardWrx.OperatingParameterManager.OperatingParameterBase-2.html">OperatingParameterBase</a>&lt;T, U&gt;&gt;</div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="WizardWrx.OperatingParameterManager.html">WizardWrx.OperatingParameterManager</a></h6>
+  <h6><strong>Assembly</strong>: WizardWrx.OperatingParameterManager.dll</h6>
+  <h5 id="WizardWrx_OperatingParameterManager_OperatingParameterBase_2_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class OperatingParameterBase&lt;T, U&gt; : IComparable&lt;OperatingParameterBase&lt;T, U&gt;&gt; where T : Enum where U : Enum</code></pre>
+  </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>Type T is expected to be an enumeration that corresponds to the
+rules for evaluating parameters (e. g., the parameter must be the
+name of an existing file, the paraameter must be a valid file name,
+but the file must not exist, the parameter must be the name of an
+existing directory.</p>
+<p>All ParameterTypeInfo constructors MUST specify the same type of
+enumeration, as must the OperatingParameters that go into the
+OperatingParametersCollection. Otherwise, the behavior of the
+OperatingParameters collection and its members is undefined.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">U</span></td>
+        <td><p>Type U is expected to be an emumeration that corresponds to the source
+from which the parameter's value originated. This is used internally to
+identify the source, e. g., ApplicationSettings or CommandLine, for
+reporting purposes and for preserving a default value read from one
+source, and overridden by a second source.</p>
+<p>The OperatingParameters objects that go into the
+OperatingParametersCollection singleton MUST specify the same generic
+type. Otherwise, the behavior of this OperatingParameters collection and
+its members is undefined.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/txwizard/OperatingParameterManager/new/master/apiSpec/new?filename=WizardWrx_OperatingParameterManager_OperatingParameterBase_2__ctor_System_Configuration_SettingsPropertyCollection_System_String_System_String__0__1_.md&amp;value=---%0Auid%3A%20WizardWrx.OperatingParameterManager.OperatingParameterBase%602.%23ctor(System.Configuration.SettingsPropertyCollection%2CSystem.String%2CSystem.String%2C%600%2C%601)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/txwizard/OperatingParameterManager/blob/master/OperatingParameterManager/OperatingParameterBase.cs/#L197">View Source</a>
+  </span>
+  <a id="WizardWrx_OperatingParameterManager_OperatingParameterBase_2__ctor_" data-uid="WizardWrx.OperatingParameterManager.OperatingParameterBase`2.#ctor*"></a>
+  <h4 id="WizardWrx_OperatingParameterManager_OperatingParameterBase_2__ctor_System_Configuration_SettingsPropertyCollection_System_String_System_String__0__1_" data-uid="WizardWrx.OperatingParameterManager.OperatingParameterBase`2.#ctor(System.Configuration.SettingsPropertyCollection,System.String,System.String,`0,`1)">OperatingParameterBase(SettingsPropertyCollection, String, String, T, U)</h4>
+  <div class="markdown level1 summary"><p>The sole public constructor accepts the parameters required to fully
+initialize the object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public OperatingParameterBase(SettingsPropertyCollection psettingsPropertyValueCollection, string pstrInternalName, string pstrDisplayName, T penmParameterType, U penmDefaultParameterSource)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Configuration.SettingsPropertyCollection</span></td>
+        <td><span class="parametername">psettingsPropertyValueCollection</span></td>
+        <td><p>Pass a reference to a System.Configuration.SettingsPropertyCollection
+collection from which to obtain default values.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">pstrInternalName</span></td>
+        <td><p>The InternalName is a string that is used to identify the parameter.
+The OperatingParametersCollection enforces unique values.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">pstrDisplayName</span></td>
+        <td><p>Display name is technically optional, since it defaults to the
+internal name if this parameter is a null reference or the empty
+string.</p>
+<p>If the parameter contains substring DISPLAY_NAME_SUBSTITUTION_TOKEN,
+treat it as the format string from which to construct the name of a
+string resource in the calling assembly that is the actual display
+name. The format string is constructed by calling string.Format to
+substitute the value of the InternalName property for substring
+DISPLAY_NAME_SUBSTITUTION_TOKEN, which is a valid format item token.</p>
+<p>If the calling assembly contains no like named string, fall back to
+InternalName, the default value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">penmParameterType</span></td>
+        <td><p>The parameter type must be a valid member of the enumeration mapped
+to the T generic type placeholder.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">U</span></td>
+        <td><span class="parametername">penmDefaultParameterSource</span></td>
+        <td><p>The parameter type must be a valid member of the enumeration mapped
+to the U generic type placeholder.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="fields">Fields
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/txwizard/OperatingParameterManager/new/master/apiSpec/new?filename=WizardWrx_OperatingParameterManager_OperatingParameterBase_2__enmParameterSource.md&amp;value=---%0Auid%3A%20WizardWrx.OperatingParameterManager.OperatingParameterBase%602._enmParameterSource%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/txwizard/OperatingParameterManager/blob/master/OperatingParameterManager/OperatingParameterBase.cs/#L608">View Source</a>
+  </span>
+  <h4 id="WizardWrx_OperatingParameterManager_OperatingParameterBase_2__enmParameterSource" data-uid="WizardWrx.OperatingParameterManager.OperatingParameterBase`2._enmParameterSource">_enmParameterSource</h4>
+  <div class="markdown level1 summary"><p>This generic enumeration type identifies the source from which the
+current value originated, e. g., Application Settings versus Command
+Line.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected U _enmParameterSource</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">U</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/txwizard/OperatingParameterManager/new/master/apiSpec/new?filename=WizardWrx_OperatingParameterManager_OperatingParameterBase_2__enmParameterType.md&amp;value=---%0Auid%3A%20WizardWrx.OperatingParameterManager.OperatingParameterBase%602._enmParameterType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/txwizard/OperatingParameterManager/blob/master/OperatingParameterManager/OperatingParameterBase.cs/#L614">View Source</a>
+  </span>
+  <h4 id="WizardWrx_OperatingParameterManager_OperatingParameterBase_2__enmParameterType" data-uid="WizardWrx.OperatingParameterManager.OperatingParameterBase`2._enmParameterType">_enmParameterType</h4>
+  <div class="markdown level1 summary"><p>This generic enumeration type identifies the native Type of the
+parameter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected T _enmParameterType</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/txwizard/OperatingParameterManager/new/master/apiSpec/new?filename=WizardWrx_OperatingParameterManager_OperatingParameterBase_2__enmState.md&amp;value=---%0Auid%3A%20WizardWrx.OperatingParameterManager.OperatingParameterBase%602._enmState%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/txwizard/OperatingParameterManager/blob/master/OperatingParameterManager/OperatingParameterBase.cs/#L620">View Source</a>
+  </span>
+  <h4 id="WizardWrx_OperatingParameterManager_OperatingParameterBase_2__enmState" data-uid="WizardWrx.OperatingParameterManager.OperatingParameterBase`2._enmState">_enmState</h4>
+  <div class="markdown level1 summary"><p>This ParameterState enumeration member indicates the current
+state of the parameter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected OperatingParameterBase&lt;T, U&gt;.ParameterState _enmState</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="WizardWrx.OperatingParameterManager.OperatingParameterBase-2.ParameterState.html">OperatingParameterBase.ParameterState</a>&lt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/txwizard/OperatingParameterManager/new/master/apiSpec/new?filename=WizardWrx_OperatingParameterManager_OperatingParameterBase_2__fHasDefaultValueInAppSettings.md&amp;value=---%0Auid%3A%20WizardWrx.OperatingParameterManager.OperatingParameterBase%602._fHasDefaultValueInAppSettings%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/txwizard/OperatingParameterManager/blob/master/OperatingParameterManager/OperatingParameterBase.cs/#L601">View Source</a>
+  </span>
+  <h4 id="WizardWrx_OperatingParameterManager_OperatingParameterBase_2__fHasDefaultValueInAppSettings" data-uid="WizardWrx.OperatingParameterManager.OperatingParameterBase`2._fHasDefaultValueInAppSettings">_fHasDefaultValueInAppSettings</h4>
+  <div class="markdown level1 summary"><p>When set to True in a derived class, this member causes the default
+value stored in the Application Settings to prevail.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected bool _fHasDefaultValueInAppSettings</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/txwizard/OperatingParameterManager/new/master/apiSpec/new?filename=WizardWrx_OperatingParameterManager_OperatingParameterBase_2__strDisplayName.md&amp;value=---%0Auid%3A%20WizardWrx.OperatingParameterManager.OperatingParameterBase%602._strDisplayName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/txwizard/OperatingParameterManager/blob/master/OperatingParameterManager/OperatingParameterBase.cs/#L626">View Source</a>
+  </span>
+  <h4 id="WizardWrx_OperatingParameterManager_OperatingParameterBase_2__strDisplayName" data-uid="WizardWrx.OperatingParameterManager.OperatingParameterBase`2._strDisplayName">_strDisplayName</h4>
+  <div class="markdown level1 summary"><p>The DisplayName is a string that identifies the parameter in user
+prompts, reports, and such.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected string _strDisplayName</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/txwizard/OperatingParameterManager/new/master/apiSpec/new?filename=WizardWrx_OperatingParameterManager_OperatingParameterBase_2__strInternalName.md&amp;value=---%0Auid%3A%20WizardWrx.OperatingParameterManager.OperatingParameterBase%602._strInternalName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/txwizard/OperatingParameterManager/blob/master/OperatingParameterManager/OperatingParameterBase.cs/#L632">View Source</a>
+  </span>
+  <h4 id="WizardWrx_OperatingParameterManager_OperatingParameterBase_2__strInternalName" data-uid="WizardWrx.OperatingParameterManager.OperatingParameterBase`2._strInternalName">_strInternalName</h4>
+  <div class="markdown level1 summary"><p>The InternalName is a string that links the parameter to its default
+value and its definition.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected string _strInternalName</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/txwizard/OperatingParameterManager/new/master/apiSpec/new?filename=WizardWrx_OperatingParameterManager_OperatingParameterBase_2__strSavedDefaultValue.md&amp;value=---%0Auid%3A%20WizardWrx.OperatingParameterManager.OperatingParameterBase%602._strSavedDefaultValue%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/txwizard/OperatingParameterManager/blob/master/OperatingParameterManager/OperatingParameterBase.cs/#L638">View Source</a>
+  </span>
+  <h4 id="WizardWrx_OperatingParameterManager_OperatingParameterBase_2__strSavedDefaultValue" data-uid="WizardWrx.OperatingParameterManager.OperatingParameterBase`2._strSavedDefaultValue">_strSavedDefaultValue</h4>
+  <div class="markdown level1 summary"><p>The SavedDefaultValue property is a string that stores the default
+value when it is overridden by a value from another source.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected string _strSavedDefaultValue</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/txwizard/OperatingParameterManager/new/master/apiSpec/new?filename=WizardWrx_OperatingParameterManager_OperatingParameterBase_2__strValue.md&amp;value=---%0Auid%3A%20WizardWrx.OperatingParameterManager.OperatingParameterBase%602._strValue%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/txwizard/OperatingParameterManager/blob/master/OperatingParameterManager/OperatingParameterBase.cs/#L644">View Source</a>
+  </span>
+  <h4 id="WizardWrx_OperatingParameterManager_OperatingParameterBase_2__strValue" data-uid="WizardWrx.OperatingParameterManager.OperatingParameterBase`2._strValue">_strValue</h4>
+  <div class="markdown level1 summary"><p>The Value property is a string that stores the string representation
+of the current value of the parameter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected string _strValue</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/txwizard/OperatingParameterManager/new/master/apiSpec/new?filename=WizardWrx_OperatingParameterManager_OperatingParameterBase_2_DISPLAY_NAME_SUBSTITUTION_TOKEN.md&amp;value=---%0Auid%3A%20WizardWrx.OperatingParameterManager.OperatingParameterBase%602.DISPLAY_NAME_SUBSTITUTION_TOKEN%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/txwizard/OperatingParameterManager/blob/master/OperatingParameterManager/OperatingParameterBase.cs/#L149">View Source</a>
+  </span>
+  <h4 id="WizardWrx_OperatingParameterManager_OperatingParameterBase_2_DISPLAY_NAME_SUBSTITUTION_TOKEN" data-uid="WizardWrx.OperatingParameterManager.OperatingParameterBase`2.DISPLAY_NAME_SUBSTITUTION_TOKEN">DISPLAY_NAME_SUBSTITUTION_TOKEN</h4>
+  <div class="markdown level1 summary"><p>A DisplayName value that contains a valid zeroth format item is a
+template from which to construct the name of a resource string that
+is the actual display name.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string DISPLAY_NAME_SUBSTITUTION_TOKEN = &quot;{0}&quot;</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/txwizard/OperatingParameterManager/new/master/apiSpec/new?filename=WizardWrx_OperatingParameterManager_OperatingParameterBase_2_DisplayName.md&amp;value=---%0Auid%3A%20WizardWrx.OperatingParameterManager.OperatingParameterBase%602.DisplayName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/txwizard/OperatingParameterManager/blob/master/OperatingParameterManager/OperatingParameterBase.cs/#L262">View Source</a>
+  </span>
+  <a id="WizardWrx_OperatingParameterManager_OperatingParameterBase_2_DisplayName_" data-uid="WizardWrx.OperatingParameterManager.OperatingParameterBase`2.DisplayName*"></a>
+  <h4 id="WizardWrx_OperatingParameterManager_OperatingParameterBase_2_DisplayName" data-uid="WizardWrx.OperatingParameterManager.OperatingParameterBase`2.DisplayName">DisplayName</h4>
+  <div class="markdown level1 summary"><p>This optional string value takes on the InternalName if its input to
+the constructor is a null reference or the empty string. Regardless,
+its intended use is as a label for printed reports.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string DisplayName { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/txwizard/OperatingParameterManager/new/master/apiSpec/new?filename=WizardWrx_OperatingParameterManager_OperatingParameterBase_2_HasDefaultValueInAppSettings.md&amp;value=---%0Auid%3A%20WizardWrx.OperatingParameterManager.OperatingParameterBase%602.HasDefaultValueInAppSettings%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/txwizard/OperatingParameterManager/blob/master/OperatingParameterManager/OperatingParameterBase.cs/#L254">View Source</a>
+  </span>
+  <a id="WizardWrx_OperatingParameterManager_OperatingParameterBase_2_HasDefaultValueInAppSettings_" data-uid="WizardWrx.OperatingParameterManager.OperatingParameterBase`2.HasDefaultValueInAppSettings*"></a>
+  <h4 id="WizardWrx_OperatingParameterManager_OperatingParameterBase_2_HasDefaultValueInAppSettings" data-uid="WizardWrx.OperatingParameterManager.OperatingParameterBase`2.HasDefaultValueInAppSettings">HasDefaultValueInAppSettings</h4>
+  <div class="markdown level1 summary"><p>The constructor sets this Boolean property to TRUE when the proparty
+has a default value stored in an application configuration settings
+file. If so, the parameter's value is initialized to the value
+stored in the setting that has the same name as that of the
+InternalName property, the ParamState property changes from
+Uninitialized to Initialized, and the ParamSource changes from
+Undefined to ApplicationSettings.</p>
+<p>Otherwise, this property remains FALSE (its default value), the
+ParamState stays Uninitialized, ParamSource stays Undefined, and the
+ParamValue stays NULL.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool HasDefaultValueInAppSettings { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/txwizard/OperatingParameterManager/new/master/apiSpec/new?filename=WizardWrx_OperatingParameterManager_OperatingParameterBase_2_InternalName.md&amp;value=---%0Auid%3A%20WizardWrx.OperatingParameterManager.OperatingParameterBase%602.InternalName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/txwizard/OperatingParameterManager/blob/master/OperatingParameterManager/OperatingParameterBase.cs/#L271">View Source</a>
+  </span>
+  <a id="WizardWrx_OperatingParameterManager_OperatingParameterBase_2_InternalName_" data-uid="WizardWrx.OperatingParameterManager.OperatingParameterBase`2.InternalName*"></a>
+  <h4 id="WizardWrx_OperatingParameterManager_OperatingParameterBase_2_InternalName" data-uid="WizardWrx.OperatingParameterManager.OperatingParameterBase`2.InternalName">InternalName</h4>
+  <div class="markdown level1 summary"><p>Unlike the DisplayName property, InternalName is required, and its
+value must be unique, since the operating parameters go into a
+generic dictionary that is maintained and served to callers by the
+OperatingParametersCollection singleton.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string InternalName { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/txwizard/OperatingParameterManager/new/master/apiSpec/new?filename=WizardWrx_OperatingParameterManager_OperatingParameterBase_2_ParamSource.md&amp;value=---%0Auid%3A%20WizardWrx.OperatingParameterManager.OperatingParameterBase%602.ParamSource%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/txwizard/OperatingParameterManager/blob/master/OperatingParameterManager/OperatingParameterBase.cs/#L277">View Source</a>
+  </span>
+  <a id="WizardWrx_OperatingParameterManager_OperatingParameterBase_2_ParamSource_" data-uid="WizardWrx.OperatingParameterManager.OperatingParameterBase`2.ParamSource*"></a>
+  <h4 id="WizardWrx_OperatingParameterManager_OperatingParameterBase_2_ParamSource" data-uid="WizardWrx.OperatingParameterManager.OperatingParameterBase`2.ParamSource">ParamSource</h4>
+  <div class="markdown level1 summary"><p>This property identifies the source of the ParamValue value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public U ParamSource { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">U</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/txwizard/OperatingParameterManager/new/master/apiSpec/new?filename=WizardWrx_OperatingParameterManager_OperatingParameterBase_2_ParamState.md&amp;value=---%0Auid%3A%20WizardWrx.OperatingParameterManager.OperatingParameterBase%602.ParamState%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/txwizard/OperatingParameterManager/blob/master/OperatingParameterManager/OperatingParameterBase.cs/#L284">View Source</a>
+  </span>
+  <a id="WizardWrx_OperatingParameterManager_OperatingParameterBase_2_ParamState_" data-uid="WizardWrx.OperatingParameterManager.OperatingParameterBase`2.ParamState*"></a>
+  <h4 id="WizardWrx_OperatingParameterManager_OperatingParameterBase_2_ParamState" data-uid="WizardWrx.OperatingParameterManager.OperatingParameterBase`2.ParamState">ParamState</h4>
+  <div class="markdown level1 summary"><p>This property reports the initialization and validation state of the
+ParamValue property.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public OperatingParameterBase&lt;T, U&gt;.ParameterState ParamState { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="WizardWrx.OperatingParameterManager.OperatingParameterBase-2.ParameterState.html">OperatingParameterBase.ParameterState</a>&lt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/txwizard/OperatingParameterManager/new/master/apiSpec/new?filename=WizardWrx_OperatingParameterManager_OperatingParameterBase_2_ParamType.md&amp;value=---%0Auid%3A%20WizardWrx.OperatingParameterManager.OperatingParameterBase%602.ParamType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/txwizard/OperatingParameterManager/blob/master/OperatingParameterManager/OperatingParameterBase.cs/#L292">View Source</a>
+  </span>
+  <a id="WizardWrx_OperatingParameterManager_OperatingParameterBase_2_ParamType_" data-uid="WizardWrx.OperatingParameterManager.OperatingParameterBase`2.ParamType*"></a>
+  <h4 id="WizardWrx_OperatingParameterManager_OperatingParameterBase_2_ParamType" data-uid="WizardWrx.OperatingParameterManager.OperatingParameterBase`2.ParamType">ParamType</h4>
+  <div class="markdown level1 summary"><p>This value is intended to designate the rule or rules that the
+ParamValue value must pass before its ParamState can be set to
+Validated.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public T ParamType { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/txwizard/OperatingParameterManager/new/master/apiSpec/new?filename=WizardWrx_OperatingParameterManager_OperatingParameterBase_2_ParamValue.md&amp;value=---%0Auid%3A%20WizardWrx.OperatingParameterManager.OperatingParameterBase%602.ParamValue%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/txwizard/OperatingParameterManager/blob/master/OperatingParameterManager/OperatingParameterBase.cs/#L320">View Source</a>
+  </span>
+  <a id="WizardWrx_OperatingParameterManager_OperatingParameterBase_2_ParamValue_" data-uid="WizardWrx.OperatingParameterManager.OperatingParameterBase`2.ParamValue*"></a>
+  <h4 id="WizardWrx_OperatingParameterManager_OperatingParameterBase_2_ParamValue" data-uid="WizardWrx.OperatingParameterManager.OperatingParameterBase`2.ParamValue">ParamValue</h4>
+  <div class="markdown level1 summary"><p>This property returns the parameter value. Check the ParamState
+before you use it.</p>
+<p>When ParameterState is Uninitialized, this property returns NULL.</p>
+<p>When ParameterState is Initialized, this value returns a value.</p>
+<p>The empty string is an invalid value.</p>
+<p>If a default value is specified in the application settings, this
+property has a value as soon as the constructor returns, and the
+ParameterState is Initialized. Otherwise, this property stays NULL
+until SetValue is called to set it and mark the parameter as
+Initialized.</p>
+<p>To exercise the validation rules encoded into the parameter type
+enumeration (generic type T), call the IsValueValid method on a
+concrete instance.</p>
+<p>When this property has a value, you can determine whether it is the
+default or an override by checking the HasDefaultValueInAppSettings
+flag. If that flag is TRUE, the value that was overridden is saved
+in the SavedDefaultValue, which is otherwise NULL.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ParamValue { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/txwizard/OperatingParameterManager/new/master/apiSpec/new?filename=WizardWrx_OperatingParameterManager_OperatingParameterBase_2_SavedDefaultValue.md&amp;value=---%0Auid%3A%20WizardWrx.OperatingParameterManager.OperatingParameterBase%602.SavedDefaultValue%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/txwizard/OperatingParameterManager/blob/master/OperatingParameterManager/OperatingParameterBase.cs/#L338">View Source</a>
+  </span>
+  <a id="WizardWrx_OperatingParameterManager_OperatingParameterBase_2_SavedDefaultValue_" data-uid="WizardWrx.OperatingParameterManager.OperatingParameterBase`2.SavedDefaultValue*"></a>
+  <h4 id="WizardWrx_OperatingParameterManager_OperatingParameterBase_2_SavedDefaultValue" data-uid="WizardWrx.OperatingParameterManager.OperatingParameterBase`2.SavedDefaultValue">SavedDefaultValue</h4>
+  <div class="markdown level1 summary"><p>If a parameter has a default value stored in application settings
+that is overridden by a value from another source, the initial value
+is saved into this property, so that consumers can easily identify
+parameter defaults that were overridden.</p>
+<p>This value being NULL means one of two things.</p>
+<ol>
+<li><p>The parameter has no default value.</p>
+</li>
+<li><p>The current value is the default value.</p>
+</li>
+</ol>
+<p>If HasDefaultValueInAppSettings is TRUE, then the current value is
+the default value. Otherwise, there is no default value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string SavedDefaultValue { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/txwizard/OperatingParameterManager/new/master/apiSpec/new?filename=WizardWrx_OperatingParameterManager_OperatingParameterBase_2_CompareTo_WizardWrx_OperatingParameterManager_OperatingParameterBase__0__1__.md&amp;value=---%0Auid%3A%20WizardWrx.OperatingParameterManager.OperatingParameterBase%602.CompareTo(WizardWrx.OperatingParameterManager.OperatingParameterBase%7B%600%2C%601%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/txwizard/OperatingParameterManager/blob/master/OperatingParameterManager/OperatingParameterBase.cs/#L458">View Source</a>
+  </span>
+  <a id="WizardWrx_OperatingParameterManager_OperatingParameterBase_2_CompareTo_" data-uid="WizardWrx.OperatingParameterManager.OperatingParameterBase`2.CompareTo*"></a>
+  <h4 id="WizardWrx_OperatingParameterManager_OperatingParameterBase_2_CompareTo_WizardWrx_OperatingParameterManager_OperatingParameterBase__0__1__" data-uid="WizardWrx.OperatingParameterManager.OperatingParameterBase`2.CompareTo(WizardWrx.OperatingParameterManager.OperatingParameterBase{`0,`1})">CompareTo(OperatingParameterBase&lt;T, U&gt;)</h4>
+  <div class="markdown level1 summary"><p>Make pairs of objects comparable by the values of their ParamValue
+properties.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int CompareTo(OperatingParameterBase&lt;T, U&gt; That)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="WizardWrx.OperatingParameterManager.OperatingParameterBase-2.html">OperatingParameterBase</a>&lt;T, U&gt;</td>
+        <td><span class="parametername">That</span></td>
+        <td><p>This explicit implementation of the IComparable interface expects an
+instance of the same type of class as its comparand.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>The return value is generally described as follows.</p>
+<ol>
+<li><p>Less than Zero = This instance precedes That instance in the sort order.</p>
+</li>
+<li><p>Zero = This instance and That instance  occur at the same place in the sort order.</p>
+</li>
+<li><p>Greater than Zero = This instance follows That instance in the sort order.</p>
+</li>
+</ol>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/txwizard/OperatingParameterManager/new/master/apiSpec/new?filename=WizardWrx_OperatingParameterManager_OperatingParameterBase_2_IsValueValid__1.md&amp;value=---%0Auid%3A%20WizardWrx.OperatingParameterManager.OperatingParameterBase%602.IsValueValid%60%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/txwizard/OperatingParameterManager/blob/master/OperatingParameterManager/OperatingParameterBase.cs/#L362">View Source</a>
+  </span>
+  <a id="WizardWrx_OperatingParameterManager_OperatingParameterBase_2_IsValueValid_" data-uid="WizardWrx.OperatingParameterManager.OperatingParameterBase`2.IsValueValid*"></a>
+  <h4 id="WizardWrx_OperatingParameterManager_OperatingParameterBase_2_IsValueValid__1" data-uid="WizardWrx.OperatingParameterManager.OperatingParameterBase`2.IsValueValid``1">IsValueValid&lt;T&gt;()</h4>
+  <div class="markdown level1 summary"><p>This method implements the validation criteria that are encoded into
+the generic parameter type enumeration (generic type T).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract bool IsValueValid&lt;T&gt;()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>If the ParanValue is initialized and meets the criteria associated
+with the generic paramter type enumeration assoicated with the
+concrete instance, this method returns TRUE, and sets the ParamState
+to Validated. Otherwise, it returns FALSE, and leaves the ParamState
+unchanged.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>Type T is expected to be an enumeration that corresponds to the
+rules for evaluating parameters (e. g., the parameter must be the
+name of an existing file, the paraameter must be a valid file name,
+but the file must not exist, the parameter must be the name of an
+existing directory.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/txwizard/OperatingParameterManager/new/master/apiSpec/new?filename=WizardWrx_OperatingParameterManager_OperatingParameterBase_2_SetValue_System_String__1_.md&amp;value=---%0Auid%3A%20WizardWrx.OperatingParameterManager.OperatingParameterBase%602.SetValue(System.String%2C%601)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/txwizard/OperatingParameterManager/blob/master/OperatingParameterManager/OperatingParameterBase.cs/#L385">View Source</a>
+  </span>
+  <a id="WizardWrx_OperatingParameterManager_OperatingParameterBase_2_SetValue_" data-uid="WizardWrx.OperatingParameterManager.OperatingParameterBase`2.SetValue*"></a>
+  <h4 id="WizardWrx_OperatingParameterManager_OperatingParameterBase_2_SetValue_System_String__1_" data-uid="WizardWrx.OperatingParameterManager.OperatingParameterBase`2.SetValue(System.String,`1)">SetValue(String, U)</h4>
+  <div class="markdown level1 summary"><p>Call this method to set the value of the parameter. The value can be
+set once only, after which its value is locked against future
+changes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetValue(string pstrValue, U penmSource)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">pstrValue</span></td>
+        <td><p>Specify the string to set as the ParamValue property value. If the
+constructor initialized the ParamValue, its value is copied into the
+SavedDefaultValue property before the new value is set.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">U</span></td>
+        <td><span class="parametername">penmSource</span></td>
+        <td><p>Specify the member of the enumerated type associated with the U
+generic type associated with the concrete instance to which to set
+the ParamSource property.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p>If pstrValue is a null reference or the empty string, a
+ArgumentNullException exception arises.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/txwizard/OperatingParameterManager/new/master/apiSpec/new?filename=WizardWrx_OperatingParameterManager_OperatingParameterBase_2_ToString.md&amp;value=---%0Auid%3A%20WizardWrx.OperatingParameterManager.OperatingParameterBase%602.ToString%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/txwizard/OperatingParameterManager/blob/master/OperatingParameterManager/OperatingParameterBase.cs/#L422">View Source</a>
+  </span>
+  <a id="WizardWrx_OperatingParameterManager_OperatingParameterBase_2_ToString_" data-uid="WizardWrx.OperatingParameterManager.OperatingParameterBase`2.ToString*"></a>
+  <h4 id="WizardWrx_OperatingParameterManager_OperatingParameterBase_2_ToString" data-uid="WizardWrx.OperatingParameterManager.OperatingParameterBase`2.ToString">ToString()</h4>
+  <div class="markdown level1 summary"><p>Override the default ToString method, so that the locals and watch
+windows display a concise summary of the object's properties.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>This overridden ToString method returns a string that contains a
+string representation of the object's simple name, followed by a
+colon, then the properties in a newline delimited string of labels
+and values.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Object.ToString()</span></div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.IComparable&lt;T&gt;</span>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/txwizard/OperatingParameterManager/new/master/apiSpec/new?filename=WizardWrx_OperatingParameterManager_OperatingParameterBase_2.md&amp;value=---%0Auid%3A%20WizardWrx.OperatingParameterManager.OperatingParameterBase%602%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/txwizard/OperatingParameterManager/blob/master/OperatingParameterManager/OperatingParameterBase.cs/#L111" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

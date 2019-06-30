@@ -21,6 +21,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <LangVersion>7.3</LangVersion>
+    <DocumentationFile>bin\Debug\WizardWrx.OperatingParameterManager.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,6 +31,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <LangVersion>7.3</LangVersion>
+    <DocumentationFile>bin\Release\WizardWrx.OperatingParameterManager.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -83,4 +85,11 @@
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>AssemblyInfoUtil.exe "$(ProjectDir)Properties\AssemblyInfo.cs" -inc:3 -fv</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>ShowVer.exe "$(ProjectDir)bin\$(ConfigurationName)\$(TargetFileName)"
+WWDisplayAssemblyInfo.exe "$(ProjectDir)bin\$(ConfigurationName)\$(TargetFileName)"</PostBuildEvent>
+  </PropertyGroup>
 </Project>

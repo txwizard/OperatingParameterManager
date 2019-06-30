@@ -16,7 +16,7 @@
 
     Author:				David A. Gray
 
-	License:            Copyright (C) 2018, David A. Gray.
+	License:            Copyright (C) 2018-2019, David A. Gray.
 						All rights reserved.
 
                         Redistribution and use in source and binary forms, with
@@ -60,6 +60,10 @@
     ---------- ------- ------ --------------------------------------------------
 	2018/09/01 1.0     DAG    Initial implementation created, tested, and 
                               deployed.
+
+    2019/06/29 1.0.3   DAG    Add missing XML documentation in preparation for
+                              publication in a documented GitHub repository and
+                              as a NuGet package.
     ============================================================================
 */
 
@@ -122,23 +126,27 @@ namespace WizardWrx.OperatingParameterManager
 		private const string PARAMETER_TYPE_INFO_RESOURCE_NAME = @"ParameterTypeInfo.txt";
 
 
-		/// <summary>
-		/// The static constructor calls this method to initialize the singleton
-		/// returned by the base constructor.
-		/// </summary>
-		/// <param name="pstrDisplayNameTemplate">
-		/// This paramter specifies a template from which to construct the name
-		/// of a managed string resource in the calling assembly to use as the
-		/// display name. If no such string exists, the InternalName property is
-		/// the display name. Likewise, if this string is a null reference or
-		/// the empty string, the InternalName property is the display name.
-		/// </param>
-		/// <param name="penmDefaultParameterSource">
-		/// This parameter specifies the value source enumeration member to use
-		/// as the parameter source for any OperatingParameter for which the
-		/// ApplicationSettings has a value.
-		/// </param>
-		private void InitiaalizeInstance (
+        /// <summary>
+        /// The static constructor calls this method to initialize the singleton
+        /// returned by the base constructor.
+        /// </summary>
+        /// <param name="psettingsPropertyValueCollection">
+        /// Pass a reference to a System.Configuration.SettingsPropertyCollection
+        /// collection to display.
+        /// </param>
+        /// <param name="pstrDisplayNameTemplate">
+        /// This paramter specifies a template from which to construct the name
+        /// of a managed string resource in the calling assembly to use as the
+        /// display name. If no such string exists, the InternalName property is
+        /// the display name. Likewise, if this string is a null reference or
+        /// the empty string, the InternalName property is the display name.
+        /// </param>
+        /// <param name="penmDefaultParameterSource">
+        /// This parameter specifies the value source enumeration member to use
+        /// as the parameter source for any OperatingParameter for which the
+        /// ApplicationSettings has a value.
+        /// </param>
+        private void InitiaalizeInstance (
 			System.Configuration.SettingsPropertyCollection psettingsPropertyValueCollection ,
 			string pstrDisplayNameTemplate ,
 			U penmDefaultParameterSource )
@@ -206,31 +214,35 @@ namespace WizardWrx.OperatingParameterManager
 		}   // OperatingParameters constructor
 
 
-		/// <summary>
-		/// Access to the single instance is gated through this method, which is
-		/// called as needed to get references, so that the parameters need not
-		/// be passed around or stored in a global variable.
-		/// </summary>
-		/// <param name="pstrDisplayNameTemplate">
-		/// This paramter specifies a template from which to construct the name
-		/// of a managed string resource in the calling assembly to use as the
-		/// display name. If no such string exists, the InternalName property is
-		/// the display name. Likewise, if this string is a null reference or
-		/// the empty string, the InternalName property is the display name.
-		/// </param>
-		/// <param name="penmDefaultParameterSource">
-		/// Specify the member of the ParameterSource, generic type U,
-		/// enumeration with which to mark the object if the ApplicationSettings
-		/// collection includes a default value.
-		/// 
-		/// Please <see cref="OperatingParametersCollection{T, U}"/> for more
-		/// details.
-		/// </param>
-		/// <returns>
-		/// Unless something causes it to fail, the return value is reference to
-		/// a fully initialized object, ready to be loaded with parameters.
-		/// </returns>
-		public static OperatingParametersCollection<T , U> GetTheSingleInstance (
+        /// <summary>
+        /// Access to the single instance is gated through this method, which is
+        /// called as needed to get references, so that the parameters need not
+        /// be passed around or stored in a global variable.
+        /// </summary>
+        /// <param name="psettingsPropertyValueCollection">
+        /// Pass a reference to a System.Configuration.SettingsPropertyCollection
+        /// collection from which to obtain default values.
+        /// </param>
+        /// <param name="pstrDisplayNameTemplate">
+        /// This paramter specifies a template from which to construct the name
+        /// of a managed string resource in the calling assembly to use as the
+        /// display name. If no such string exists, the InternalName property is
+        /// the display name. Likewise, if this string is a null reference or
+        /// the empty string, the InternalName property is the display name.
+        /// </param>
+        /// <param name="penmDefaultParameterSource">
+        /// Specify the member of the ParameterSource, generic type U,
+        /// enumeration with which to mark the object if the ApplicationSettings
+        /// collection includes a default value.
+        /// 
+        /// Please <see cref="OperatingParametersCollection{T, U}"/> for more
+        /// details.
+        /// </param>
+        /// <returns>
+        /// Unless something causes it to fail, the return value is reference to
+        /// a fully initialized object, ready to be loaded with parameters.
+        /// </returns>
+        public static OperatingParametersCollection<T , U> GetTheSingleInstance (
 			System.Configuration.SettingsPropertyCollection psettingsPropertyValueCollection ,
 			string pstrDisplayNameTemplate ,
 			U penmDefaultParameterSource )

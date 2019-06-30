@@ -18,7 +18,7 @@
 
     Author:				David A. Gray
 
-	License:            Copyright (C) 2018, David A. Gray.
+	License:            Copyright (C) 2018-2019, David A. Gray.
 						All rights reserved.
 
                         Redistribution and use in source and binary forms, with
@@ -62,6 +62,10 @@
     ---------- ------- ------ --------------------------------------------------
 	2018/08/31 1.0     DAG    Initial implementation created, tested, and 
                               deployed.
+
+    2019/06/29 1.0.3   DAG    Add missing XML documentation in preparation for
+                              publication in a documented GitHub repository and
+                              as a NuGet package.
     ============================================================================
 */
 
@@ -155,39 +159,43 @@ namespace WizardWrx.OperatingParameterManager
 		{ } // private constructor
 
 
-		/// <summary>
-		/// The sole public constructor accepts the parameters required to fully
-		/// initialize the object.
-		/// </summary>
-		/// <param name="pstrInternalName">
-		/// The InternalName is a string that is used to identify the parameter.
-		/// The OperatingParametersCollection enforces unique values.
-		/// </param>
-		/// <param name="pstrDisplayName">
-		/// Display name is technically optional, since it defaults to the
-		/// internal name if this parameter is a null reference or the empty
-		/// string.
-		/// 
-		/// If the parameter contains substring DISPLAY_NAME_SUBSTITUTION_TOKEN,
-		/// treat it as the format string from which to construct the name of a
-		/// string resource in the calling assembly that is the actual display
-		/// name. The format string is constructed by calling string.Format to
-		/// substitute the value of the InternalName property for substring
-		/// DISPLAY_NAME_SUBSTITUTION_TOKEN, which is a valid format item token.
-		/// 
-		/// If the calling assembly contains no like named string, fall back to
-		/// InternalName, the default value.
-		/// </param>
-		/// <param name="penmParameterType">
-		/// The parameter type must be a valid member of the enumeration mapped
-		/// to the T generic type placeholder.
-		/// </param>
-		/// <param name="penmDefaultParameterSource">
-		/// The parameter type must be a valid member of the enumeration mapped
-		/// to the U generic type placeholder.
-		/// </param>
-		public OperatingParameterBase (
-			System.Configuration.SettingsPropertyCollection psettingsPropertyValueCollection ,
+        /// <summary>
+        /// The sole public constructor accepts the parameters required to fully
+        /// initialize the object.
+        /// </summary>
+        /// <param name="psettingsPropertyValueCollection">
+        /// Pass a reference to a System.Configuration.SettingsPropertyCollection
+        /// collection from which to obtain default values.
+        /// </param>
+        /// <param name="pstrInternalName">
+        /// The InternalName is a string that is used to identify the parameter.
+        /// The OperatingParametersCollection enforces unique values.
+        /// </param>
+        /// <param name="pstrDisplayName">
+        /// Display name is technically optional, since it defaults to the
+        /// internal name if this parameter is a null reference or the empty
+        /// string.
+        /// 
+        /// If the parameter contains substring DISPLAY_NAME_SUBSTITUTION_TOKEN,
+        /// treat it as the format string from which to construct the name of a
+        /// string resource in the calling assembly that is the actual display
+        /// name. The format string is constructed by calling string.Format to
+        /// substitute the value of the InternalName property for substring
+        /// DISPLAY_NAME_SUBSTITUTION_TOKEN, which is a valid format item token.
+        /// 
+        /// If the calling assembly contains no like named string, fall back to
+        /// InternalName, the default value.
+        /// </param>
+        /// <param name="penmParameterType">
+        /// The parameter type must be a valid member of the enumeration mapped
+        /// to the T generic type placeholder.
+        /// </param>
+        /// <param name="penmDefaultParameterSource">
+        /// The parameter type must be a valid member of the enumeration mapped
+        /// to the U generic type placeholder.
+        /// </param>
+        public OperatingParameterBase (
+			SettingsPropertyCollection psettingsPropertyValueCollection ,
 			string pstrInternalName ,
 			string pstrDisplayName ,
 			T penmParameterType ,
@@ -380,7 +388,7 @@ namespace WizardWrx.OperatingParameterManager
 		{
 			if ( string.IsNullOrEmpty ( pstrValue ) )
 			{
-				throw new ArgumentNullException ( @"pstrValue" );
+                throw new ArgumentNullException ( nameof ( pstrValue ) );
 			}   // TRUE (unanticipated outcome) block, if ( string.IsNullOrEmpty ( pstrValue ) )
 			else
 			{
@@ -586,17 +594,53 @@ namespace WizardWrx.OperatingParameterManager
 
 
 		#region Private Instance Property Storeage
+        /// <summary>
+        /// When set to True in a derived class, this member causes the default
+        /// value stored in the Application Settings to prevail.
+        /// </summary>
 		protected bool _fHasDefaultValueInAppSettings = false;
 
+        /// <summary>
+        /// This generic enumeration type identifies the source from which the
+        /// current value originated, e. g., Application Settings versus Command
+        /// Line.
+        /// </summary>
 		protected U _enmParameterSource;
 
+        /// <summary>
+        /// This generic enumeration type identifies the native Type of the
+        /// parameter.
+        /// </summary>
 		protected T _enmParameterType;
 
+        /// <summary>
+        /// This ParameterState enumeration member indicates the current
+        /// state of the parameter.
+        /// </summary>
 		protected ParameterState _enmState = ParameterState.Uninitialized;
 
+        /// <summary>
+        /// The DisplayName is a string that identifies the parameter in user
+        /// prompts, reports, and such.
+        /// </summary>
 		protected string _strDisplayName;
+
+        /// <summary>
+        /// The InternalName is a string that links the parameter to its default
+        /// value and its definition.
+        /// </summary>
 		protected string _strInternalName;
+
+        /// <summary>
+        /// The SavedDefaultValue property is a string that stores the default
+        /// value when it is overridden by a value from another source.
+        /// </summary>
 		protected string _strSavedDefaultValue;
+
+        /// <summary>
+        /// The Value property is a string that stores the string representation
+        /// of the current value of the parameter.
+        /// </summary>
 		protected string _strValue;
 		#endregion // Private Instance Property Storeage
 

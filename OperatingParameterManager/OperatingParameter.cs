@@ -38,7 +38,7 @@
 
     Author:				David A. Gray
 
-	License:            Copyright (C) 2018, David A. Gray.
+	License:            Copyright (C) 2018-2019, David A. Gray.
 						All rights reserved.
 
                         Redistribution and use in source and binary forms, with
@@ -82,10 +82,15 @@
     ---------- ------- ------ --------------------------------------------------
 	2018/09/02 1.0     DAG    Initial implementation created, tested, and 
                               deployed.
+
+    2019/06/29 1.0.3   DAG    Add missing XML documentation in preparation for
+                              publication in a documented GitHub repository and
+                              as a NuGet package.
     ============================================================================
 */
 
 using System;
+using System.Configuration;
 
 
 namespace WizardWrx.OperatingParameterManager
@@ -179,29 +184,33 @@ namespace WizardWrx.OperatingParameterManager
 		where T : Enum
 		where U : Enum
 	{
-		/// <summary>
-		/// The sole public constructor accepts the parameters required to fully
-		/// initialize the object.
-		/// </summary>
-		/// <param name="pstrInternalName">
-		/// The InternalName is a string that is used to identify the parameter.
-		/// The OperatingParametersCollection enforces unique values.
-		/// </param>
-		/// <param name="pstrDisplayName">
-		/// Display name is technically optional, since it defaults to the
-		/// internal name if this parameter is a null reference or the empty
-		/// string.
-		/// </param>
-		/// <param name="penmParameterType">
-		/// The parameter type must be a valid member of the enumeration mapped
-		/// to the T generic type placeholder.
-		/// </param>
-		/// <param name="penmDefaultParameterSource">
-		/// The parameter type must be a valid member of the enumeration mapped
-		/// to the U generic type placeholder.
-		/// </param>
-		public OperatingParameter (
-			System.Configuration.SettingsPropertyCollection psettingsPropertyValueCollection ,
+        /// <summary>
+        /// The sole public constructor accepts the parameters required to fully
+        /// initialize the object.
+        /// </summary>
+        /// <param name="psettingsPropertyValueCollection">
+        /// Pass a reference to a System.Configuration.SettingsPropertyCollection
+        /// collection from which to obtain default values.
+        /// </param>
+        /// <param name="pstrInternalName">
+        /// The InternalName is a string that is used to identify the parameter.
+        /// The OperatingParametersCollection enforces unique values.
+        /// </param>
+        /// <param name="pstrDisplayName">
+        /// Display name is technically optional, since it defaults to the
+        /// internal name if this parameter is a null reference or the empty
+        /// string.
+        /// </param>
+        /// <param name="penmParameterType">
+        /// The parameter type must be a valid member of the enumeration mapped
+        /// to the T generic type placeholder.
+        /// </param>
+        /// <param name="penmDefaultParameterSource">
+        /// The parameter type must be a valid member of the enumeration mapped
+        /// to the U generic type placeholder.
+        /// </param>
+        public OperatingParameter (
+			SettingsPropertyCollection psettingsPropertyValueCollection ,
 			string pstrInternalName ,
 			string pstrDisplayName ,
 			T penmParameterType ,
