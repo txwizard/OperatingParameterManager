@@ -58,7 +58,7 @@
 
     Author:				David A. Gray
 
-	License:            Copyright (C) 2018, David A. Gray.
+	License:            Copyright (C) 2018-2019, David A. Gray.
 						All rights reserved.
 
                         Redistribution and use in source and binary forms, with
@@ -102,13 +102,19 @@
     ---------- ------- ------ --------------------------------------------------
 	2018/09/01 1.0     DAG    Initial implementation created, tested, and 
                               deployed.
+
+    2019/06/30 1.0.14   DAG   Eliminate rudundant WizardWrx using directive and
+                              correct overlooked formatting inconsistencies and
+                              deviations from conventions.
     ============================================================================
 */
 
+
 using System;
 using System.ComponentModel;
-using WizardWrx;
+
 using WizardWrx.AnyCSV;
+
 
 namespace WizardWrx.OperatingParameterManager
 {
@@ -272,28 +278,36 @@ namespace WizardWrx.OperatingParameterManager
 		/// parameter type value that was parsed from the string that was passed
 		/// into the constructor.
 		/// </summary>
-		public T ParameterType { get { return _enmParameterType; } }
-		#endregion  // Public Property Getter Methods
+		public T ParameterType
+        {
+            get
+            {
+                lock ( s_srCriticalSection )
+                    return _enmParameterType;
+            }   // T ParameterType property get method
+        }   // Read-only property: T ParameterType
+        #endregion  // Public Property Getter Methods
 
 
-		#region Private Storage for Instance Properties
-		private string _strParameterName;
+        #region Private Storage for Instance Properties
+        private string _strParameterName;
 		private T _enmParameterType;
-		#endregion  // Private Storage for Instance Properties
+        private readonly SyncRoot s_srCriticalSection = new SyncRoot ( typeof ( ParameterTypeInfo<T> ).FullName );
+        #endregion  // Private Storage for Instance Properties
 
 
-		#region Private Static Storage Shared by All Instances
-		/// <summary>
-		/// The s_astrParameterNames array is initialized by the first call to a
-		/// constructor by parsing its pastrParameterInfoColumnNames parameter
-		/// into an array of strings by calling the Parse method on the
-		/// WizardWrx.AnyCSV.Parser object stored in the read-only s_parser
-		/// object, which defines a parser that splits delimited strings at each
-		/// TAB character, unles the TAB is inside a pair of double quotation
-		/// marks (the Guard Character). Double quotation marks, if present, are
-		/// discarded.
-		/// </summary>
-		private static string [ ] s_astrParameterNames;
+        #region Private Static Storage Shared by All Instances
+        /// <summary>
+        /// The s_astrParameterNames array is initialized by the first call to a
+        /// constructor by parsing its pastrParameterInfoColumnNames parameter
+        /// into an array of strings by calling the Parse method on the
+        /// WizardWrx.AnyCSV.Parser object stored in the read-only s_parser
+        /// object, which defines a parser that splits delimited strings at each
+        /// TAB character, unles the TAB is inside a pair of double quotation
+        /// marks (the Guard Character). Double quotation marks, if present, are
+        /// discarded.
+        /// </summary>
+        private static string [ ] s_astrParameterNames;
 
 		/// <summary>
 		/// The s_parser member defines a parser that splits delimited strings
@@ -301,7 +315,7 @@ namespace WizardWrx.OperatingParameterManager
 		/// quotation marks (the Guard Character). Double quotation marks, if
 		/// present, are discarded.
 		/// </summary>
-		private static readonly Parser s_parser = new WizardWrx.AnyCSV.Parser (
+		private static readonly Parser s_parser = new Parser (
 			CSVParseEngine.DelimiterChar.Tab ,
 			CSVParseEngine.GuardChar.DoubleQuote ,
 			CSVParseEngine.GuardDisposition.Strip );

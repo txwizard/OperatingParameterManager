@@ -868,6 +868,14 @@ references:
   fullName.vb: WizardWrx.OperatingParameterManager.OperatingParameterBase(Of T, U).ParamValue
   nameWithType: OperatingParameterBase<T, U>.ParamValue
   nameWithType.vb: OperatingParameterBase(Of T, U).ParamValue
+- uid: WizardWrx.OperatingParameterManager.OperatingParameterBase`2.s_syncRoot
+  name: s_syncRoot
+  href: api/WizardWrx.OperatingParameterManager.OperatingParameterBase-2.html#WizardWrx_OperatingParameterManager_OperatingParameterBase_2_s_syncRoot
+  commentId: F:WizardWrx.OperatingParameterManager.OperatingParameterBase`2.s_syncRoot
+  fullName: WizardWrx.OperatingParameterManager.OperatingParameterBase<T, U>.s_syncRoot
+  fullName.vb: WizardWrx.OperatingParameterManager.OperatingParameterBase(Of T, U).s_syncRoot
+  nameWithType: OperatingParameterBase<T, U>.s_syncRoot
+  nameWithType.vb: OperatingParameterBase(Of T, U).s_syncRoot
 - uid: WizardWrx.OperatingParameterManager.OperatingParameterBase`2.SavedDefaultValue
   name: SavedDefaultValue
   href: api/WizardWrx.OperatingParameterManager.OperatingParameterBase-2.html#WizardWrx_OperatingParameterManager_OperatingParameterBase_2_SavedDefaultValue

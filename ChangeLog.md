@@ -6,6 +6,22 @@ Within each version, classes are covered in alphabetical order when applicable.
 
 Detailed API documentation is at <https://txwizard.github.io/OperatingParameterManager/>.
 
+## Version 1.0.14, released 2019/06/30
+
+This build makes everything likely to need it as thread-safe as I know how to
+make it, while eliminating a couple of unreferenced assemblies from the lisst of
+referenced assemblies for both the library and the unit test/demonstration
+program. Finally, the requirement of C# compiler version 7.3 is relaxed on the
+demonstration program, although that change is academinc, since the library must
+retain that requirment.
+
+The foregoing changes pave the way for replacing direct assembly references with
+NuGet package references, to be followed immediately by release of the library
+as a new NuGet package.
+
+Although MSBuild created a new version of the test stand assembly, its code is
+unchanged from the original release in September 2018.
+
 ## Version 1.0.6, released 2019/06/30
 
 This build clears compiler warnings that arose in conjunction with enabling the

@@ -160,7 +160,7 @@ namespace WizardWrx.OperatingParameterManager.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Resources Stored in Assembly {0}:{1}.
+        ///   Looks up a localized string similar to {1}Resources Stored in Assembly {0}:{1}.
         /// </summary>
         internal static string MESSAGE_RESOURCE_NAMES_HEADER {
             get {

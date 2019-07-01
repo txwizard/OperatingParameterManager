@@ -194,7 +194,7 @@
     <comment>The main routine generates a report footer from this template.</comment>
   </data>
   <data name="MSG_PARAMETER_LIST_HEADER" xml:space="preserve">
-    <value>{2}The {0} application has {1} parameters.{2}</value>
+    <value>The {0} application has {1} parameters.{2}</value>
     <comment>The main routine generates a report heading from this template.</comment>
   </data>
   <data name="MSG_VALIDATION_BEGIN" xml:space="preserve">

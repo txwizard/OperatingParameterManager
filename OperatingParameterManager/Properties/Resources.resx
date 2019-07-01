@@ -162,7 +162,7 @@
     <comment>A method on the static Utl class formats a report summary for the list of resources stored in an assembly from this template.</comment>
   </data>
   <data name="MESSAGE_RESOURCE_NAMES_HEADER" xml:space="preserve">
-    <value>Resources Stored in Assembly {0}:{1}</value>
+    <value>{1}Resources Stored in Assembly {0}:{1}</value>
     <comment>A method on the static Utl class formats a report header for the list of resources stored in an assembly from this template.</comment>
   </data>
   <data name="MESSAGE_UNEXPECTED_SETTINGS_TYPE" xml:space="preserve">

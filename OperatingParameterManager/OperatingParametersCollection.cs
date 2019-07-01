@@ -64,13 +64,20 @@
     2019/06/29 1.0.3   DAG    Add missing XML documentation in preparation for
                               publication in a documented GitHub repository and
                               as a NuGet package.
+
+    2019/06/30 1.0.14   DAG   Make everything thread-safe, eliminate rudundant
+                              WizardWrx using directive and correct overlooked
+                              formatting inconsistencies and deviations from
+                              conventions.
     ============================================================================
 */
 
+
 using System;
 using System.Collections.Generic;
-using WizardWrx;
+
 using WizardWrx.Core;
+
 
 namespace WizardWrx.OperatingParameterManager
 {
@@ -247,12 +254,19 @@ namespace WizardWrx.OperatingParameterManager
 			string pstrDisplayNameTemplate ,
 			U penmDefaultParameterSource )
 		{
-			OperatingParametersCollection<T , U> rtheOperatingParametersCollection = s_genTheOnlyInstance;
-			rtheOperatingParametersCollection.InitiaalizeInstance (
-				psettingsPropertyValueCollection ,
-				pstrDisplayNameTemplate ,
-				penmDefaultParameterSource );
-			return rtheOperatingParametersCollection;
+            OperatingParametersCollection<T , U> rtheOperatingParametersCollection = null;
+
+            lock ( s_srCriticalSection )
+            {   // Make this call thread-safe.
+                rtheOperatingParametersCollection = s_genTheOnlyInstance;
+
+                rtheOperatingParametersCollection.InitiaalizeInstance (
+                    psettingsPropertyValueCollection ,
+                    pstrDisplayNameTemplate ,
+                    penmDefaultParameterSource );
+            }   // lock ( s_srCriticalSection )
+
+            return rtheOperatingParametersCollection;
 		}   // GetTheSingleInstance Method
 
 
@@ -322,7 +336,8 @@ namespace WizardWrx.OperatingParameterManager
 		/// </returns>
 		public int GetCount ( )
 		{
-			return _dctOperatingParameters != null ? _dctOperatingParameters.Count : ArrayInfo.ARRAY_IS_EMPTY;
+            lock ( s_srCriticalSection )
+                return _dctOperatingParameters != null ? _dctOperatingParameters.Count : ArrayInfo.ARRAY_IS_EMPTY;
 		}   // GetCount Method
 
 
@@ -347,82 +362,93 @@ namespace WizardWrx.OperatingParameterManager
 		/// </exception>
 		public OperatingParameter<T, U> GetParameterByName ( string pstrParameterName )
 		{
-			OperatingParameter<T, U> roperatingParameter;
+            lock ( s_srCriticalSection )
+            {
+                if ( _dctOperatingParameters.TryGetValue ( pstrParameterName , out OperatingParameter<T , U> roperatingParameter ) )
+                {
+                    return roperatingParameter;
+                }   // TRUE (The specified parameter name is valid.) block, if ( _dctOperatingParameters.TryGetValue ( pstrParameterName , out roperatingParameter ) )
+                else
+                {
+                    string strMessage = string.Format (
+                        Properties.Resources.ERRMSG_UNDEFINED_ARGNAME ,
+                        pstrParameterName );
+                    throw new ArgumentException ( strMessage );
+                }   // FALSE (The specified parameter name is INvalid.) block, if ( _dctOperatingParameters.TryGetValue ( pstrParameterName , out roperatingParameter ) )
+            }   // lock ( s_srCriticalSection )
+        }   // GetParameterByName
 
-			if ( _dctOperatingParameters.TryGetValue ( pstrParameterName , out roperatingParameter ) )
-			{
-				return roperatingParameter;
-			}   // TRUE (The specified parameter name is valid.) block, if ( _dctOperatingParameters.TryGetValue ( pstrParameterName , out roperatingParameter ) )
-			else
-			{
-				string strMessage = string.Format (
-					Properties.Resources.ERRMSG_UNDEFINED_ARGNAME ,
-					pstrParameterName );
-				throw new ArgumentException ( strMessage );
-			}   // FALSE (The specified parameter name is INvalid.) block, if ( _dctOperatingParameters.TryGetValue ( pstrParameterName , out roperatingParameter ) )
-		}   // GetParameterByName
 
-
-		/// <summary>
-		/// Call this method to get a list of the valid parameter names. This is
-		/// useful for pupulating the list of valid parameters in a command line
-		/// argument parser, such as, for example, a CmdLneArgsBasic instance.
-		/// </summary>
-		/// <returns>
-		/// If it succeeds, the return value is an array of string, each of
-		/// which is the internal name of a parameter. Otherwise, the return
-		/// value is a null reference, and the calling routine should abort.
-		/// </returns>
-		public string [ ] GetParameterNames ( )
+        /// <summary>
+        /// Call this method to get a list of the valid parameter names. This is
+        /// useful for pupulating the list of valid parameters in a command line
+        /// argument parser, such as, for example, a CmdLneArgsBasic instance.
+        /// </summary>
+        /// <returns>
+        /// If it succeeds, the return value is an array of string, each of
+        /// which is the internal name of a parameter. Otherwise, the return
+        /// value is a null reference, and the calling routine should abort.
+        /// </returns>
+        public string [ ] GetParameterNames ( )
 		{
-			if ( _dctOperatingParameters != null )
-			{
-				string [ ] rastrKeys = new string [ _dctOperatingParameters.Keys.Count ];
-				_dctOperatingParameters.Keys.CopyTo ( rastrKeys , ArrayInfo.ARRAY_FIRST_ELEMENT );
-				return rastrKeys;
-			}   // TRUE (anticipated outcome) block, if ( _dctOperatingParameters != null )
-			else
-			{	// This should almost certainly throw an exception, and I may eventually make it so.
-				return null;
-			}   // FALSE (unanticipated outcome) block, if ( _dctOperatingParameters != null )
-		}   // GetParameterNames Method
+            lock ( s_srCriticalSection )
+            {
+                if ( _dctOperatingParameters != null )
+                {
+                    string [ ] rastrKeys = new string [ _dctOperatingParameters.Keys.Count ];
+                    _dctOperatingParameters.Keys.CopyTo (
+                        rastrKeys ,
+                        ArrayInfo.ARRAY_FIRST_ELEMENT );
+                    return rastrKeys;
+                }   // TRUE (anticipated outcome) block, if ( _dctOperatingParameters != null )
+                else
+                {   // This should almost certainly throw an exception, and I may eventually make it so.
+                    return null;
+                }   // FALSE (unanticipated outcome) block, if ( _dctOperatingParameters != null )
+            }   // lock ( s_srCriticalSection )
+        }   // GetParameterNames Method
 
 
-		/// <summary>
-		/// Set the parameter values from an initialized CmdLneArgsBasic object,
-		/// overriding any that were initialized from the Application Settings.
-		/// </summary>
-		/// <param name="pcmdArgs">
-		/// Pass in a reference to a CmdLneArgsBasic object that was initialized
-		/// from the string array returned by the GetParameterNames method.
-		/// </param>
-		/// <param name="penmParameterSource">
-		/// Specify the member of the ParameterSource, generic type U,
-		/// enumeration with which to mark the object if the CmdLneArgsBasic
-		/// object includes a value.
-		/// 
-		/// Please <see cref="OperatingParametersCollection{T, U}"/> for more
-		/// details.
-		/// </param>
-		public void SetFromCommandLineArguments ( CmdLneArgsBasic pcmdArgs , U penmParameterSource )
-		{
-			IEnumerator<KeyValuePair<string, OperatingParameter<T , U>>> listOfValidArguments = _dctOperatingParameters
-				.GetEnumerator ( );
+        /// <summary>
+        /// Set the parameter values from an initialized CmdLneArgsBasic object,
+        /// overriding any that were initialized from the Application Settings.
+        /// </summary>
+        /// <param name="pcmdArgs">
+        /// Pass in a reference to a CmdLneArgsBasic object that was initialized
+        /// from the string array returned by the GetParameterNames method.
+        /// </param>
+        /// <param name="penmParameterSource">
+        /// Specify the member of the ParameterSource, generic type U,
+        /// enumeration with which to mark the object if the CmdLneArgsBasic
+        /// object includes a value.
+        /// 
+        /// Please <see cref="OperatingParametersCollection{T, U}"/> for more
+        /// details.
+        /// </param>
+        public void SetFromCommandLineArguments (
+            CmdLneArgsBasic pcmdArgs ,
+            U penmParameterSource )
+        {
+            lock ( s_srCriticalSection )
+            {
+                IEnumerator<KeyValuePair<string , OperatingParameter<T , U>>> listOfValidArguments = _dctOperatingParameters
+                .GetEnumerator ( );
 
-			while ( listOfValidArguments.MoveNext ( ) )
-			{
-				string strName = listOfValidArguments.Current.Key;
-				string strValue = pcmdArgs.GetArgByName ( strName );
+                while ( listOfValidArguments.MoveNext ( ) )
+                {
+                    string strName = listOfValidArguments.Current.Key;
+                    string strValue = pcmdArgs.GetArgByName ( strName );
 
-				if ( !string.IsNullOrEmpty ( strValue ) )
-				{
-					OperatingParameter<T , U> opThis = listOfValidArguments.Current.Value;
-					opThis.SetValue (
-						strValue ,                                              // string pstrValue
-						penmParameterSource );									// ParameterSource penmSource
-				}	// if ( !string.IsNullOrEmpty ( strValue ) )
-			}   // while ( listOfValidArguments.MoveNext ( ) )
-		}   // SetFromCommandLineArguments Method
+                    if ( !string.IsNullOrEmpty ( strValue ) )
+                    {
+                        OperatingParameter<T , U> opThis = listOfValidArguments.Current.Value;
+                        opThis.SetValue (
+                            strValue ,                                              // string pstrValue
+                            penmParameterSource );                                  // ParameterSource penmSource
+                    }   // if ( !string.IsNullOrEmpty ( strValue ) )
+                }   // while ( listOfValidArguments.MoveNext ( ) )
+            }   // lock ( s_srCriticalSection )
+        }   // SetFromCommandLineArguments Method
 
 
 		/// <summary>

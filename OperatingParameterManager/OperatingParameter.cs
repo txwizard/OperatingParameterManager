@@ -86,6 +86,10 @@
     2019/06/29 1.0.3   DAG    Add missing XML documentation in preparation for
                               publication in a documented GitHub repository and
                               as a NuGet package.
+
+    2019/06/30 1.0.14   DAG   Make everything thread-safe and correct overlooked
+                              formatting inconsistencies and deviations from
+                              conventions.
     ============================================================================
 */
 
@@ -253,31 +257,34 @@ namespace WizardWrx.OperatingParameterManager
 		{
 			bool rIsValid = false;
 
-			switch ( Convert.ChangeType ( _enmParameterType , typeof ( ParameterType ) ) )
-			{
-				case ParameterType.ExistingDirectory:
-					rIsValid = System.IO.Directory.Exists ( _strValue );
-					break;
-				case ParameterType.ExistingFile:
-					rIsValid = System.IO.File.Exists ( _strValue );
-					break;
-				case ParameterType.NewFile:
-					rIsValid = !System.IO.File.Exists ( _strValue );
-					break;
-				default:
-					string strMessage = string.Format (
-						Properties.Resources.ERRMSG_INVALID_PARAMETER_TYPE ,
-						_enmParameterType.GetType ( ).Name ,
-						( int ) Convert.ChangeType ( _enmParameterType , typeof ( ParameterType ) ) );
-					throw new InvalidOperationException ( strMessage );
-			}   // switch ( Convert.ChangeType ( _enmParameterType , typeof ( ParameterType ) ) )
+            lock ( s_syncRoot )
+            {
+                switch ( Convert.ChangeType ( _enmParameterType , typeof ( ParameterType ) ) )
+                {
+                    case ParameterType.ExistingDirectory:
+                        rIsValid = System.IO.Directory.Exists ( _strValue );
+                        break;
+                    case ParameterType.ExistingFile:
+                        rIsValid = System.IO.File.Exists ( _strValue );
+                        break;
+                    case ParameterType.NewFile:
+                        rIsValid = !System.IO.File.Exists ( _strValue );
+                        break;
+                    default:
+                        string strMessage = string.Format (
+                            Properties.Resources.ERRMSG_INVALID_PARAMETER_TYPE ,
+                            _enmParameterType.GetType ( ).Name ,
+                            ( int ) Convert.ChangeType ( _enmParameterType , typeof ( ParameterType ) ) );
+                        throw new InvalidOperationException ( strMessage );
+                }   // switch ( Convert.ChangeType ( _enmParameterType , typeof ( ParameterType ) ) )
 
-			if ( rIsValid )
-			{
-				_enmState = ParameterState.Validated;
-			}   // if ( rIsValid )
+                if ( rIsValid )
+                {
+                    _enmState = ParameterState.Validated;
+                }   // if ( rIsValid )
+            }   // lock ( s_syncRoot )
 
-			return rIsValid;
+            return rIsValid;
 		}   // public override bool IsValueValid
 	}   // public class OperatingParameter
 }   // partial namespace WizardWrx.OperatingParameterManager

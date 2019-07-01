@@ -67,11 +67,18 @@
 
     2019/06/30 1.0.6   DAG    Correct typographical errors and add clarification
                               to the XML documentation islands.
+
+    2019/06/30 1.0.14   DAG   Make everything thread-safe and correct overlooked
+                              formatting inconsistencies and deviations from
+                              conventions, and add my planned perforamce
+                              enhancement as an action item.
     ============================================================================
 */
 
+
 using System;
 using System.Configuration;
+
 
 namespace WizardWrx.OperatingParameterManager
 {
@@ -120,34 +127,37 @@ namespace WizardWrx.OperatingParameterManager
 		}   // GetTheSingleInstance
 
 
-		/// <summary>
-		/// List all Application Settings values on the Standard Output stream
-		/// of a console application.
-		/// </summary>
-		public void ListAllAppSettings ( )
-		{
-			Console.WriteLine (
-				Properties.Resources.MESSAGE_APPSETTINGS_HEADER ,               // Format Control String: {1}Application Setting Defaults for {0}:{1}
-				System.Reflection.Assembly.GetEntryAssembly().Location ,        // Format Item 0: Setting Defaults for {0}
-				Environment.NewLine );                                          // Format Item 1: platform-dependent newline
-			int intItemNumber = ListInfo.LIST_IS_EMPTY;
+        /// <summary>
+        /// List all Application Settings values on the Standard Output stream
+        /// of a console application.
+        /// </summary>
+        public void ListAllAppSettings ( )
+        {
+            lock ( s_srCriticalSection )
+            {
+                Console.WriteLine (
+                    Properties.Resources.MESSAGE_APPSETTINGS_HEADER ,           // Format Control String: {1}Application Setting Defaults for {0}:{1}
+                    System.Reflection.Assembly.GetEntryAssembly ( ).Location ,  // Format Item 0: Setting Defaults for {0}
+                    Environment.NewLine );                                      // Format Item 1: platform-dependent newline
+                int intItemNumber = ListInfo.LIST_IS_EMPTY;
 
-			foreach ( SettingsProperty settingsProperty in _settingsPropertyValueCollection )
-			{
-				Console.WriteLine (
-					Properties.Resources.MESSAGE_APPSETTING_VALUE ,             // Format Control String: AppSetting # {0,2}: Name         = {1}{4}               PropertyType = {2}{4}               DefaultValue = {3}{4}
-					++intItemNumber ,                                           // Format Item 0: AppSetting # {0,2}:
-					settingsProperty.Name ,                                     // Format Item 1: Name         = {1}
-					settingsProperty.PropertyType ,                             // Format Item 2: PropertyType = {2}
-					settingsProperty.DefaultValue ,                             // Format Item 3: DefaultValue = {3}
-					Environment.NewLine );                                      // Format Item 4: platform-dependent newline
-			}   // foreach ( System.Configuration.SettingsProperty settingsProperty in _settingsPropertyValueCollection )
+                foreach ( SettingsProperty settingsProperty in _settingsPropertyValueCollection )
+                {
+                    Console.WriteLine (
+                        Properties.Resources.MESSAGE_APPSETTING_VALUE ,         // Format Control String: AppSetting # {0,2}: Name         = {1}{4}               PropertyType = {2}{4}               DefaultValue = {3}{4}
+                        ++intItemNumber ,                                       // Format Item 0: AppSetting # {0,2}:
+                        settingsProperty.Name ,                                 // Format Item 1: Name         = {1}
+                        settingsProperty.PropertyType ,                         // Format Item 2: PropertyType = {2}
+                        settingsProperty.DefaultValue ,                         // Format Item 3: DefaultValue = {3}
+                        Environment.NewLine );                                  // Format Item 4: platform-dependent newline
+                }   // foreach ( System.Configuration.SettingsProperty settingsProperty in _settingsPropertyValueCollection )
 
-			Console.WriteLine (
-				Properties.Resources.MESSAGE_APPSETTINGS_FOOTER ,               // Format Control String: {1}Seetings count = {0}:{1}
-				intItemNumber ,                                                 // Format Item 0: count = {0}
-				Environment.NewLine );                                          // Format Item 1: platform-dependent newline
-		}   // public ListAllAppSettings Method
+                Console.WriteLine (
+                    Properties.Resources.MESSAGE_APPSETTINGS_FOOTER ,           // Format Control String: {1}Seetings count = {0}:{1}
+                    intItemNumber ,                                             // Format Item 0: count = {0}
+                    Environment.NewLine );                                      // Format Item 1: platform-dependent newline
+            }   // lock ( s_srCriticalSection )
+        }   // public ListAllAppSettings Method
 
 
 
@@ -197,12 +207,14 @@ namespace WizardWrx.OperatingParameterManager
 		/// </remarks>
 		public object GetAppSettingByName ( string pstrName )
 		{
-			if ( string.IsNullOrEmpty ( pstrName ) )
-				throw new ArgumentNullException ( @"pstrName" );
+            if ( string.IsNullOrEmpty ( pstrName ) )
+                throw new ArgumentNullException ( nameof ( pstrName ) );
 
-			foreach ( SettingsProperty settingsProperty in _settingsPropertyValueCollection )
-				if ( settingsProperty.Name == pstrName )
-					return settingsProperty.DefaultValue;
+            // ToDo: Wrap _settingsPropertyValueCollection in a private derived class that can be sorted and searched by Name.
+            lock ( s_srCriticalSection )
+                foreach ( SettingsProperty settingsProperty in _settingsPropertyValueCollection )
+                    if ( settingsProperty.Name == pstrName )
+                        return settingsProperty.DefaultValue;
 
 			return null;
 		}   // GetAppSettingByName
@@ -211,21 +223,22 @@ namespace WizardWrx.OperatingParameterManager
 		private AppSettingsForEntryAssembly ( ) { }
 
 
-		private AppSettingsForEntryAssembly ( System.Configuration.SettingsPropertyCollection psettingsPropertyValueCollection )
+		private AppSettingsForEntryAssembly ( SettingsPropertyCollection psettingsPropertyValueCollection )
 		{   // Singletons have exactly one of everything, including its constructor, which must be private.
 			InitializeOnFirstUse (
-				s_srCriticalSection ,						// This static is initialized inline.
-				this ,										// Since the call has been pushed forward, the static instance handle has yet to be initialized.
-				psettingsPropertyValueCollection );			// Pass in a reference to the caller's settings.
-		}   // OperatingParameters constructor
+				s_srCriticalSection ,						                    // This static is initialized inline.
+				this ,                                                          // Since the call has been pushed forward, the static instance handle has yet to be initialized.
+                psettingsPropertyValueCollection );                             // Pass in a reference to the caller's settings.
+        }   // OperatingParameters constructor
 
 
 		private void InitializeOnFirstUse (
 			SyncRoot ps_srCriticalSection ,
 			AppSettingsForEntryAssembly pappSettingsForEntryAssembly ,
-			System.Configuration.SettingsPropertyCollection psettingsPropertyValueCollection )
+			SettingsPropertyCollection psettingsPropertyValueCollection )
 		{
-			_settingsPropertyValueCollection = psettingsPropertyValueCollection;
+            lock ( ps_srCriticalSection )
+                _settingsPropertyValueCollection = psettingsPropertyValueCollection;
 		}   // private void InitializeOnFirstUse
 
 

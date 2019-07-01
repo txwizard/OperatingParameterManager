@@ -232,7 +232,7 @@ namespace OperatingParameters_Demo.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {2}The {0} application has {1} parameters.{2}.
+        ///   Looks up a localized string similar to The {0} application has {1} parameters.{2}.
         /// </summary>
         public static string MSG_PARAMETER_LIST_HEADER {
             get {

@@ -67,6 +67,10 @@
     2019/06/30 1.0.6   DAG    Correct typographical errors and add clarification
                               to the XML documentation islands and this flower
                               box.
+
+    2019/06/30 1.0.14   DAG   Eliminate rudundant WizardWrx.ConsoleAppAids3
+                              using directive and correct overlooked formatting
+                              inconsistencies and deviations from conventions.
     ============================================================================
 */
 
@@ -80,8 +84,6 @@ using System.Reflection;
 using System.Resources;
 using System.Text;
 
-using WizardWrx;
-using WizardWrx.ConsoleAppAids3;
 using WizardWrx.FormatStringEngine;
 
 
@@ -110,7 +112,9 @@ namespace WizardWrx.OperatingParameterManager
 		/// </returns>
 		public static string GetStringResourceByNameFromCallingAssembly ( string pstrStringName )
 		{
-			return GetStringResourceByNameFromAnyAssembly (  pstrStringName , Assembly.GetCallingAssembly ( ) );
+            return GetStringResourceByNameFromAnyAssembly (
+                pstrStringName ,
+                Assembly.GetCallingAssembly ( ) );
 		}   // GetStringResourcesFromCallingAssembly
 
 
@@ -130,7 +134,9 @@ namespace WizardWrx.OperatingParameterManager
 		/// </returns>
 		public static string GetStringResourceByNameFromEntryAssembly ( string pstrStringName )
 		{
-			return GetStringResourceByNameFromAnyAssembly ( pstrStringName , Assembly.GetEntryAssembly ( ) );
+			return GetStringResourceByNameFromAnyAssembly (
+                pstrStringName ,
+                Assembly.GetEntryAssembly ( ) );
 		}   // GetStringResourceByNameFromEntryAssembly
 
 
@@ -472,43 +478,43 @@ namespace WizardWrx.OperatingParameterManager
 			int intLabelFieldWidth = ComputeLabelFieldWidth ( autpLabelAndValue );
 			string strPropertyPadding = SpecialStrings.EMPTY_STRING.PadRight ( strTypeName.Length );
 
-			//	--------------------------------------------------------
-			//	A string is constructed with two right-padded format
-			//	items and a third and fourth default format items.
-			//
-			//	1)	The first format item gets the type name string,
-			//		strTypeName, on the first iteration of a loop over 
-			//		the autpLabelAndValue array, while subsequent
-			//		iterations use the strPropertyPadding string.
-			//
-			//	2)	The second format item gets the property name from
-			//		the Label member of a LabelAndValue structure stored
-			//		in the current element of the autpLabelAndValue
-			//		array.
-			//
-			//	3)	The third format item gets the Value member of the
-			//		LabelAndValue structure stored in the current 
-			//		element of the autpLabelAndValue array.
-			//
-			//	4)	The fourth format item gets the platform-specific
-			//		newline character or sequence thereof.
-			//	--------------------------------------------------------
+            //	--------------------------------------------------------
+            //	A string is constructed with two right-padded format
+            //	items and a third and fourth default format items.
+            //
+            //	1)	The first format item gets the type name string,
+            //		strTypeName, on the first iteration of a loop over 
+            //		the autpLabelAndValue array, while subsequent
+            //		iterations use the strPropertyPadding string.
+            //
+            //	2)	The second format item gets the property name from
+            //		the Label member of a LabelAndValue structure stored
+            //		in the current element of the autpLabelAndValue
+            //		array.
+            //
+            //	3)	The third format item gets the Value member of the
+            //		LabelAndValue structure stored in the current 
+            //		element of the autpLabelAndValue array.
+            //
+            //	4)	The fourth format item gets the platform-specific
+            //		newline character or sequence thereof.
+            //	--------------------------------------------------------
 
-			string strDynamicFormatString = string.Concat ( new string [ ]
-			{
-						FormatItem.AdjustToMaximumWidth (
-							ArrayInfo.ARRAY_FIRST_ELEMENT ,
-							strTypeName.Length ,
-							FormatItem.Alignment.Left ,
-							SpecialStrings.EMPTY_STRING ) ,
-						SpecialCharacters.SPACE_CHAR.ToString ( ) ,
-						FormatItem.AdjustToMaximumWidth (
-							ArrayInfo.ARRAY_SECOND_ELEMENT ,
-							intLabelFieldWidth ,
-							FormatItem.Alignment.Left ,
-							SpecialStrings.EMPTY_STRING ) ,
-						THIRD_FORMAT_ITEM
-			} );
+            string strDynamicFormatString = string.Concat ( new string [ ]
+            {
+                FormatItem.AdjustToMaximumWidth (
+                    ArrayInfo.ARRAY_FIRST_ELEMENT ,
+                    strTypeName.Length ,
+                    FormatItem.Alignment.Left ,
+                    SpecialStrings.EMPTY_STRING ) ,
+                SpecialCharacters.SPACE_CHAR.ToString ( ) ,
+                FormatItem.AdjustToMaximumWidth (
+                    ArrayInfo.ARRAY_SECOND_ELEMENT ,
+                    intLabelFieldWidth ,
+                    FormatItem.Alignment.Left ,
+                    SpecialStrings.EMPTY_STRING ) ,
+                THIRD_FORMAT_ITEM
+            } );
 
 			//	--------------------------------------------------------
 			//	The initial capacity of the StringBuilder is twice the
@@ -599,6 +605,7 @@ namespace WizardWrx.OperatingParameterManager
 				return pstrValue;
 			}   // FALSE (The string is neither null, nor the empty string.) block, if ( string.IsNullOrEmpty ( pstrValue ) )
 		}   // public RenderStringValue Method
+
 
 		private struct LabelAndValue
 		{

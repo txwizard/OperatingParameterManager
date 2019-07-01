@@ -22,7 +22,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
-    <LangVersion>7.3</LangVersion>
+    <LangVersion>default</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,7 +32,8 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <LangVersion>7.3</LangVersion>
+    <LangVersion>default</LangVersion>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>WW_Icon1.ico</ApplicationIcon>
@@ -42,13 +43,6 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="WizardWrx.AnyCSV">
-      <HintPath>..\..\..\WizardWrx_Libs\AnyCSV\AnyCSV\bin\Release\Wizardwrx.AnyCSV.dll</HintPath>
-    </Reference>
-    <Reference Include="WizardWrx.AssemblyUtils, Version=7.0.110.883, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\WizardWrx_Libs\WizardWrx_NET_API\AssemblyUtils\bin\Release\Wizardwrx.AssemblyUtils.dll</HintPath>
-    </Reference>
     <Reference Include="WizardWrx.Common">
       <HintPath>..\..\..\WizardWrx_Libs\WizardWrx_NET_API\Common\bin\Release\Wizardwrx.Common.dll</HintPath>
     </Reference>
@@ -60,13 +54,6 @@
     </Reference>
     <Reference Include="WizardWrx.DLLConfigurationManager">
       <HintPath>..\..\..\WizardWrx_Libs\WizardWrx_NET_API\DLLConfigurationManager\bin\Release\Wizardwrx.DLLConfigurationManager.dll</HintPath>
-    </Reference>
-    <Reference Include="WizardWrx.EmbeddedTextFile">
-      <HintPath>..\..\..\WizardWrx_Libs\WizardWrx_NET_API\EmbeddedTextFile\bin\Release\Wizardwrx.EmbeddedTextFile.dll</HintPath>
-    </Reference>
-    <Reference Include="WizardWrx.FormatStringEngine, Version=7.0.158.883, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\WizardWrx_Libs\WizardWrx_NET_API\FormatStringEngine\bin\Release\Wizardwrx.FormatStringEngine.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

@@ -66,6 +66,10 @@
     2019/06/29 1.0.3   DAG    Add missing XML documentation in preparation for
                               publication in a documented GitHub repository and
                               as a NuGet package.
+
+    2019/06/30 1.0.14   DAG   Make everything thread-safe and correct overlooked
+                              formatting inconsistencies and deviations from
+                              conventions.
     ============================================================================
 */
 
@@ -201,165 +205,221 @@ namespace WizardWrx.OperatingParameterManager
 			T penmParameterType ,
 			U penmDefaultParameterSource )
 		{
-			if ( string.IsNullOrEmpty ( pstrInternalName ) )
-				throw new ArgumentNullException ( @"pstrInternalName" );
+            if ( string.IsNullOrEmpty ( pstrInternalName ) )
+                throw new ArgumentNullException ( nameof ( pstrInternalName ) );
 
 			_strInternalName = pstrInternalName;
 			_strDisplayName = string.IsNullOrEmpty ( pstrDisplayName ) 
 				? pstrInternalName
 				: pstrDisplayName;
 
-			lock ( s_syncRoot )
-			{	// Make it thread-safe.
-				if ( s_settingsForEntryAssembly == null )
-				{	// Set it once only.
-					if ( psettingsPropertyValueCollection != null )
-					{   // Do nothing if the input parameter is null.
-						s_settingsForEntryAssembly = AppSettingsForEntryAssembly.GetTheSingleInstance ( psettingsPropertyValueCollection );
-					}   // TRUE (anticipated outcome) block, if ( psettingsPropertyValueCollection != null )
-					else
-					{
-						throw new ArgumentNullException ( );
-					}   // FALSE (unanticipated outcome) block, if ( psettingsPropertyValueCollection != null )
-				}   // if ( s_settingsPropertyValueCollection == null )
-			}   // lock ( s_syncRoot )
+            lock ( s_syncRoot )
+            {   // Make it thread-safe.
+                if ( s_settingsForEntryAssembly == null )
+                {   // Set it once only.
+                    if ( psettingsPropertyValueCollection != null )
+                    {   // Do nothing if the input parameter is null.
+                        s_settingsForEntryAssembly = AppSettingsForEntryAssembly.GetTheSingleInstance ( psettingsPropertyValueCollection );
+                    }   // TRUE (anticipated outcome) block, if ( psettingsPropertyValueCollection != null )
+                    else
+                    {
+                        throw new ArgumentNullException ( );
+                    }   // FALSE (unanticipated outcome) block, if ( psettingsPropertyValueCollection != null )
+                }   // if ( s_settingsPropertyValueCollection == null )
 
-			ParseDisplayName ( );
-			_enmParameterType = penmParameterType;
+                ParseDisplayName ( );
+                _enmParameterType = penmParameterType;
 
-			if ( CheckForDefaultValueInAppSettings ( _strInternalName , ref _strValue ) )
-			{   // Store the default value, flip the associated switch, identify the source, and flag the parameter as initialized.
-				_fHasDefaultValueInAppSettings = true;
-				_enmParameterSource = penmDefaultParameterSource;
-				_enmState = ParameterState.Initialized;
-			}   // TRUE (The application cofiguration defines a default value.) block, if ( CheckForDefaultValueInAppSettings ( _stInternalName , ref _strValue ) )
-		}   // Public OperatingParameterBase constructor
-		#endregion // Constructors
-
-
-		#region Property Getters
-		/// <summary>
-		/// The constructor sets this Boolean property to TRUE when the proparty
-		/// has a default value stored in an application configuration settings
-		/// file. If so, the parameter's value is initialized to the value
-		/// stored in the setting that has the same name as that of the
-		/// InternalName property, the ParamState property changes from
-		/// Uninitialized to Initialized, and the ParamSource changes from
-		/// Undefined to ApplicationSettings.
-		/// 
-		/// Otherwise, this property remains FALSE (its default value), the
-		/// ParamState stays Uninitialized, ParamSource stays Undefined, and the
-		/// ParamValue stays NULL.
-		/// </summary>
-		public bool HasDefaultValueInAppSettings { get { return _fHasDefaultValueInAppSettings; } }
+                if ( CheckForDefaultValueInAppSettings ( _strInternalName , ref _strValue ) )
+                {   // Store the default value, flip the associated switch, identify the source, and flag the parameter as initialized.
+                    _fHasDefaultValueInAppSettings = true;
+                    _enmParameterSource = penmDefaultParameterSource;
+                    _enmState = ParameterState.Initialized;
+                }   // TRUE (The application cofiguration defines a default value.) block, if ( CheckForDefaultValueInAppSettings ( _stInternalName , ref _strValue ) )
+            }   // lock ( s_syncRoot )
+        }   // Public OperatingParameterBase constructor
+        #endregion // Constructors
 
 
-		/// <summary>
-		/// This optional string value takes on the InternalName if its input to
-		/// the constructor is a null reference or the empty string. Regardless,
-		/// its intended use is as a label for printed reports.
-		/// </summary>
-		public string DisplayName {  get { return _strDisplayName; } }
+        #region Property Getters
+        /// <summary>
+        /// The constructor sets this Boolean property to TRUE when the proparty
+        /// has a default value stored in an application configuration settings
+        /// file. If so, the parameter's value is initialized to the value
+        /// stored in the setting that has the same name as that of the
+        /// InternalName property, the ParamState property changes from
+        /// Uninitialized to Initialized, and the ParamSource changes from
+        /// Undefined to ApplicationSettings.
+        /// 
+        /// Otherwise, this property remains FALSE (its default value), the
+        /// ParamState stays Uninitialized, ParamSource stays Undefined, and the
+        /// ParamValue stays NULL.
+        /// </summary>
+        public bool HasDefaultValueInAppSettings
+        {
+            get
+            {
+                lock ( s_syncRoot )
+                    return _fHasDefaultValueInAppSettings;
+            }   // bool HasDefaultValueInAppSettings property getter method
+        }   // read-only property: bool HasDefaultValueInAppSettings 
 
 
-		/// <summary>
-		/// Unlike the DisplayName property, InternalName is required, and its
-		/// value must be unique, since the operating parameters go into a
-		/// generic dictionary that is maintained and served to callers by the
-		/// OperatingParametersCollection singleton.
-		/// </summary>
-		public string InternalName { get { return _strInternalName; } }
+        /// <summary>
+        /// This optional string value takes on the InternalName if its input to
+        /// the constructor is a null reference or the empty string. Regardless,
+        /// its intended use is as a label for printed reports.
+        /// </summary>
+        public string DisplayName
+        {
+            get
+            {
+                lock ( s_syncRoot )
+                    return _strDisplayName;
+            }   // string DisplayName property getter method
+        }   // read-only property: string DisplayName
 
 
-		/// <summary>
-		/// This property identifies the source of the ParamValue value.
-		/// </summary>
-		public U ParamSource { get { return _enmParameterSource; } }
+        /// <summary>
+        /// Unlike the DisplayName property, InternalName is required, and its
+        /// value must be unique, since the operating parameters go into a
+        /// generic dictionary that is maintained and served to callers by the
+        /// OperatingParametersCollection singleton.
+        /// </summary>
+        public string InternalName
+        {
+            get
+            {
+                lock ( s_syncRoot )
+                    return _strInternalName;
+            }   // string InternalName property getter method
+        }   // read-only property: string InternalName
 
 
-		/// <summary>
-		/// This property reports the initialization and validation state of the
-		/// ParamValue property.
-		/// </summary>
-		public ParameterState ParamState { get { return _enmState; } }
+        /// <summary>
+        /// This property identifies the source of the ParamValue value.
+        /// </summary>
+        public U ParamSource
+        {
+            get
+            {
+                lock ( s_syncRoot )
+                    return _enmParameterSource;
+            }   // U ParamSource property getter method
+        }   // read-only property: U ParamSource
 
 
-		/// <summary>
-		/// This value is intended to designate the rule or rules that the
-		/// ParamValue value must pass before its ParamState can be set to
-		/// Validated.
-		/// </summary>
-		public T ParamType { get { return _enmParameterType; } }
+        /// <summary>
+        /// This property reports the initialization and validation state of the
+        /// ParamValue property.
+        /// </summary>
+        public ParameterState ParamState
+        {
+            get
+            {
+                lock ( s_syncRoot )
+                    return _enmState;
+            }   // ParameterState ParamState property getter method
+        }   // read-only property: ParameterState ParamState
 
 
-		/// <summary>
-		/// This property returns the parameter value. Check the ParamState
-		/// before you use it.
-		/// 
-		/// When ParameterState is Uninitialized, this property returns NULL.
-		/// 
-		/// When ParameterState is Initialized, this value returns a value. 
-		/// 
-		/// The empty string is an invalid value.
-		/// 
-		/// If a default value is specified in the application settings, this
-		/// property has a value as soon as the constructor returns, and the
-		/// ParameterState is Initialized. Otherwise, this property stays NULL
-		/// until SetValue is called to set it and mark the parameter as
-		/// Initialized.
-		/// 
-		/// To exercise the validation rules encoded into the parameter type
-		/// enumeration (generic type T), call the IsValueValid method on a
-		/// concrete instance.
-		/// 
-		/// When this property has a value, you can determine whether it is the
-		/// default or an override by checking the HasDefaultValueInAppSettings
-		/// flag. If that flag is TRUE, the value that was overridden is saved
-		/// in the SavedDefaultValue, which is otherwise NULL.
-		/// </summary>
-		public string ParamValue { get { return _strValue; } }
+        /// <summary>
+        /// This value is intended to designate the rule or rules that the
+        /// ParamValue value must pass before its ParamState can be set to
+        /// Validated.
+        /// </summary>
+        public T ParamType
+        {
+            get
+            {
+                lock ( s_syncRoot )
+                    return _enmParameterType;
+            }   // T ParamType property getter method
+        }   // read-only property: T ParamType
 
 
-		/// <summary>
-		/// If a parameter has a default value stored in application settings
-		/// that is overridden by a value from another source, the initial value
-		/// is saved into this property, so that consumers can easily identify
-		/// parameter defaults that were overridden.
-		/// 
-		/// This value being NULL means one of two things.
-		/// 
-		/// 1) The parameter has no default value.
-		/// 
-		/// 2) The current value is the default value.
-		/// 
-		/// If HasDefaultValueInAppSettings is TRUE, then the current value is
-		/// the default value. Otherwise, there is no default value.
-		/// </summary>
-		public string SavedDefaultValue { get { return _strSavedDefaultValue; } }
-		#endregion // Property Getters
+        /// <summary>
+        /// This property returns the parameter value. Check the ParamState
+        /// before you use it.
+        /// 
+        /// When ParameterState is Uninitialized, this property returns NULL.
+        /// 
+        /// When ParameterState is Initialized, this value returns a value. 
+        /// 
+        /// The empty string is an invalid value.
+        /// 
+        /// If a default value is specified in the application settings, this
+        /// property has a value as soon as the constructor returns, and the
+        /// ParameterState is Initialized. Otherwise, this property stays NULL
+        /// until SetValue is called to set it and mark the parameter as
+        /// Initialized.
+        /// 
+        /// To exercise the validation rules encoded into the parameter type
+        /// enumeration (generic type T), call the IsValueValid method on a
+        /// concrete instance.
+        /// 
+        /// When this property has a value, you can determine whether it is the
+        /// default or an override by checking the HasDefaultValueInAppSettings
+        /// flag. If that flag is TRUE, the value that was overridden is saved
+        /// in the SavedDefaultValue, which is otherwise NULL.
+        /// </summary>
+        public string ParamValue
+        {
+            get
+            {
+                lock ( s_syncRoot )
+                    return _strValue;
+            }   // string ParamValue property getter method
+        }   // read-only property: string ParamValue
 
 
-		#region Public Methods
-		#pragma warning disable CS0693
-		/// <summary>
-		/// This method implements the validation criteria that are encoded into
-		/// the generic parameter type enumeration (generic type T).
-		/// </summary>
-		/// <typeparam name="T">
-		/// Type T is expected to be an enumeration that corresponds to the 
-		/// rules for evaluating parameters (e. g., the parameter must be the
-		/// name of an existing file, the paraameter must be a valid file name,
-		/// but the file must not exist, the parameter must be the name of an
-		/// existing directory.
-		/// </typeparam>
-		/// <returns>
-		/// If the ParanValue is initialized and meets the criteria associated
-		/// with the generic paramter type enumeration assoicated with the
-		/// concrete instance, this method returns TRUE, and sets the ParamState
-		/// to Validated. Otherwise, it returns FALSE, and leaves the ParamState
-		/// unchanged.
-		/// </returns>
-		public abstract bool IsValueValid<T> ( );
+        /// <summary>
+        /// If a parameter has a default value stored in application settings
+        /// that is overridden by a value from another source, the initial value
+        /// is saved into this property, so that consumers can easily identify
+        /// parameter defaults that were overridden.
+        /// 
+        /// This value being NULL means one of two things.
+        /// 
+        /// 1) The parameter has no default value.
+        /// 
+        /// 2) The current value is the default value.
+        /// 
+        /// If HasDefaultValueInAppSettings is TRUE, then the current value is
+        /// the default value. Otherwise, there is no default value.
+        /// </summary>
+        public string SavedDefaultValue
+        {
+            get
+            {
+                lock ( s_syncRoot )
+                    return _strSavedDefaultValue;
+            }   // string SavedDefaultValue property getter method
+        }   // read-only property: string SavedDefaultValue
+        #endregion // Property Getters
+
+
+        #region Public Methods
+        #pragma warning disable CS0693
+        /// <summary>
+        /// This method implements the validation criteria that are encoded into
+        /// the generic parameter type enumeration (generic type T).
+        /// </summary>
+        /// <typeparam name="T">
+        /// Type T is expected to be an enumeration that corresponds to the 
+        /// rules for evaluating parameters (e. g., the parameter must be the
+        /// name of an existing file, the paraameter must be a valid file name,
+        /// but the file must not exist, the parameter must be the name of an
+        /// existing directory.
+        /// </typeparam>
+        /// <returns>
+        /// If the ParanValue is initialized and meets the criteria associated
+        /// with the generic paramter type enumeration assoicated with the
+        /// concrete instance, this method returns TRUE, and sets the ParamState
+        /// to Validated. Otherwise, it returns FALSE, and leaves the ParamState
+        /// unchanged.
+        /// </returns>
+        public abstract bool IsValueValid<T> ( );
 		#pragma warning restore CS0693
 
 
@@ -386,54 +446,60 @@ namespace WizardWrx.OperatingParameterManager
 			string pstrValue ,
 			U penmSource )
 		{
-			if ( string.IsNullOrEmpty ( pstrValue ) )
-			{
+            if ( string.IsNullOrEmpty ( pstrValue ) )
+            {
                 throw new ArgumentNullException ( nameof ( pstrValue ) );
-			}   // TRUE (unanticipated outcome) block, if ( string.IsNullOrEmpty ( pstrValue ) )
-			else
-			{
-				if ( _enmState == ParameterState.Initialized )
-				{	// Preserve the default value for reference.
-					_strSavedDefaultValue = _strValue;
-				}   // TRUE (The parameter has a default value that was read from the application configuration.) block, if ( _enmState == ParameterState.Initialized )
-				else
-				{	// Change the state from Uninitialized to Initialized.
-					_enmState = ParameterState.Initialized;
-				}   // FALSE (The application configuration is mute on the subject of a default value for this parameter.) block, if ( _enmState == ParameterState.Initialized )
+            }   // TRUE (unanticipated outcome) block, if ( string.IsNullOrEmpty ( pstrValue ) )
+            else
+            {
+                lock ( s_syncRoot )
+                {
+                    if ( _enmState == ParameterState.Initialized )
+                    {   // Preserve the default value for reference.
+                        _strSavedDefaultValue = _strValue;
+                    }   // TRUE (The parameter has a default value that was read from the application configuration.) block, if ( _enmState == ParameterState.Initialized )
+                    else
+                    {   // Change the state from Uninitialized to Initialized.
+                        _enmState = ParameterState.Initialized;
+                    }   // FALSE (The application configuration is mute on the subject of a default value for this parameter.) block, if ( _enmState == ParameterState.Initialized )
 
-				_enmParameterSource = penmSource;
-				_strValue = pstrValue;
-			}   // if ( !string.IsNullOrEmpty ( pstrValue ) )
+                    _enmParameterSource = penmSource;
+                    _strValue = pstrValue;
+                }   // lock ( s_syncRoot )
+            }   // if ( !string.IsNullOrEmpty ( pstrValue ) )
 		}   // SetValue Method
-		#endregion // Public Methods
+        #endregion // Public Methods
 
 
-		#region ToString Method Override
-		/// <summary>
-		/// Override the default ToString method, so that the locals and watch
-		/// windows display a concise summary of the object's properties.
-		/// </summary>
-		/// <returns>
-		/// This overridden ToString method returns a string that contains a
-		/// string representation of the object's simple name, followed by a
-		/// colon, then the properties in a newline delimited string of labels
-		/// and values.
-		/// </returns>
-		public override string ToString ( )
-		{
-			return string.Format (
-				Properties.Resources.OPERATING_PARAMETER_TOSTRING ,             // Format control string
-				this.GetType ( ).Name ,                                         // Format Item 0: {0}: InternalName =
-				_strInternalName ,                                              // Format Item 1: InternalName = {1}
-				Utl.RenderStringValue ( _strDisplayName ) ,                     // Format Item 2: DisplayName = {2}
-				Utl.RenderStringValue ( _strValue ) ,                           // Format Item 3: ParamValue = {3},
-				_enmParameterType ,                                             // Format Item 4: ParamType = {4},
-				_fHasDefaultValueInAppSettings ,                                // Format Item 5: MayHaveAppSetting = {5},
-				_enmState ,                                                     // Format Item 6: ParamState = {6},
-				_enmParameterSource ,                                           // Format Item 7: ParamSource = {7},
-				Utl.RenderStringValue ( _strSavedDefaultValue ) ,               // Format Item 8: SavedDefaultValue = {8}
-				Environment.NewLine );                                          // Format Item 9: Platform-dependent enwline
-		}   // ToString Method override
+        #region ToString Method Override
+        /// <summary>
+        /// Override the default ToString method, so that the locals and watch
+        /// windows display a concise summary of the object's properties.
+        /// </summary>
+        /// <returns>
+        /// This overridden ToString method returns a string that contains a
+        /// string representation of the object's simple name, followed by a
+        /// colon, then the properties in a newline delimited string of labels
+        /// and values.
+        /// </returns>
+        public override string ToString ( )
+        {
+            lock ( s_syncRoot )
+            {
+                return string.Format (
+                    Properties.Resources.OPERATING_PARAMETER_TOSTRING ,         // Format control string
+                    this.GetType ( ).Name ,                                     // Format Item 0: {0}: InternalName =
+                    _strInternalName ,                                          // Format Item 1: InternalName = {1}
+                    Utl.RenderStringValue ( _strDisplayName ) ,                 // Format Item 2: DisplayName = {2}
+                    Utl.RenderStringValue ( _strValue ) ,                       // Format Item 3: ParamValue = {3},
+                    _enmParameterType ,                                         // Format Item 4: ParamType = {4},
+                    _fHasDefaultValueInAppSettings ,                            // Format Item 5: MayHaveAppSetting = {5},
+                    _enmState ,                                                 // Format Item 6: ParamState = {6},
+                    _enmParameterSource ,                                       // Format Item 7: ParamSource = {7},
+                    Utl.RenderStringValue ( _strSavedDefaultValue ) ,           // Format Item 8: SavedDefaultValue = {8}
+                    Environment.NewLine );                                      // Format Item 9: Platform-dependent enwline
+            }   // lock ( s_syncRoot )
+        }   // ToString Method override
 		#endregion // ToString Method Override
 
 
@@ -557,39 +623,42 @@ namespace WizardWrx.OperatingParameterManager
 			ref T pgenNewValue )
 		#pragma warning restore CS0693
 		{
-			try
-			{
-				object objSettingsValue = s_settingsForEntryAssembly.GetAppSettingByName ( pstrAttributeName );
+            lock ( s_syncRoot )
+            {
+                try
+                {
+                    object objSettingsValue = s_settingsForEntryAssembly.GetAppSettingByName ( pstrAttributeName );
 
-				if ( objSettingsValue != null )
-				{	// The application settings contain a default value. Make sure it is of the expected type.
-					if ( objSettingsValue is T )
-					{   // The setting value is of the expected type. Copy the default value into the location to which reference argument pgenNewValue points, and return TRUE.
-						pgenNewValue = ( T ) objSettingsValue;
-						return true;
-					}   // TRUE (anticipated outcome) block, if ( objSettingsValue is T )
-					else
-					{	// The type of the actual default parameter value differs from the expected type. Since this should never happen in a correctly configured application, raise a detailed exception.
-						string strExceptionMessage = string.Format (                // Prepare a detailed diagnostic message.
-							Properties.Resources.MESSAGE_UNEXPECTED_SETTINGS_TYPE , // Format control string
-							pstrAttributeName ,                                     // Format Item 0: Settings property name  = {0}
-							objSettingsValue.GetType ( ) ,                          // Format Item 1: Settings property type  = {1}
-							pgenNewValue.GetType ( ) ,                              // Format Item 2: Expected settings type  = {2}
-							objSettingsValue ,                                      // Format Item 3: Settings property value = {3}
-							Environment.NewLine );                                  // Format Item 4: Plaform-dependent newline
-						throw new InvalidCastException ( strExceptionMessage );     // Toss cookies and die.
-					}   // FALSE (unanticipated outcome) block, if ( objSettingsValue is T )
-				}   // TRUE (The application settings include a default value for this operating parameter.) block, if ( objSettingsValue != null )
-				else
-				{	// The application settings don't define a default value for this operating parameter. Leave the value as is (NULL) and return FALSE.
-					return false;
-				}   // FALSE (The application settings omit a default value for this operating parameter.) block, if ( objSettingsValue != null )
-			}   // try block
-			catch ( Exception exAllOthers )
-			{   // Something entirely unexpected happened. Toss cookies and die.
-				throw exAllOthers;
-			}   // catch ( Exception exAllOthers )
-		}   // CheckForDefaultValueInAppSettings
+                    if ( objSettingsValue != null )
+                    {   // The application settings contain a default value. Make sure it is of the expected type.
+                        if ( objSettingsValue is T )
+                        {   // The setting value is of the expected type. Copy the default value into the location to which reference argument pgenNewValue points, and return TRUE.
+                            pgenNewValue = ( T ) objSettingsValue;
+                            return true;
+                        }   // TRUE (anticipated outcome) block, if ( objSettingsValue is T )
+                        else
+                        {   // The type of the actual default parameter value differs from the expected type. Since this should never happen in a correctly configured application, raise a detailed exception.
+                            string strExceptionMessage = string.Format (                // Prepare a detailed diagnostic message.
+                                Properties.Resources.MESSAGE_UNEXPECTED_SETTINGS_TYPE , // Format control string
+                                pstrAttributeName ,                                     // Format Item 0: Settings property name  = {0}
+                                objSettingsValue.GetType ( ) ,                          // Format Item 1: Settings property type  = {1}
+                                pgenNewValue.GetType ( ) ,                              // Format Item 2: Expected settings type  = {2}
+                                objSettingsValue ,                                      // Format Item 3: Settings property value = {3}
+                                Environment.NewLine );                                  // Format Item 4: Plaform-dependent newline
+                            throw new InvalidCastException ( strExceptionMessage );     // Toss cookies and die.
+                        }   // FALSE (unanticipated outcome) block, if ( objSettingsValue is T )
+                    }   // TRUE (The application settings include a default value for this operating parameter.) block, if ( objSettingsValue != null )
+                    else
+                    {   // The application settings don't define a default value for this operating parameter. Leave the value as is (NULL) and return FALSE.
+                        return false;
+                    }   // FALSE (The application settings omit a default value for this operating parameter.) block, if ( objSettingsValue != null )
+                }   // try block
+                catch ( Exception exAllOthers )
+                {   // Something entirely unexpected happened. Toss cookies and die.
+                    throw exAllOthers;
+                }   // catch ( Exception exAllOthers )
+            }   // lock ( s_syncRoot )
+        }   // CheckForDefaultValueInAppSettings
 		#endregion // Private Static Methods
 
 
@@ -644,9 +713,14 @@ namespace WizardWrx.OperatingParameterManager
 		protected string _strValue;
 		#endregion // Private Instance Property Storeage
 
+
 		#region Private Static Property Storage
 		private static AppSettingsForEntryAssembly s_settingsForEntryAssembly = null;
-		private static readonly SyncRoot s_syncRoot = new SyncRoot ( typeof ( OperatingParameterBase<T , U> ).ToString ( ) );
-		#endregion
-	}   // OperatingParameterBase
+
+        /// <summary>
+        /// Make this synchronization object visible to inheritors.
+        /// </summary>
+        protected static readonly SyncRoot s_syncRoot = new SyncRoot ( typeof ( OperatingParameterBase<T , U> ).ToString ( ) );
+        #endregion  // Private Static Property Storage
+    }   // OperatingParameterBase
 }   // partial namespace WizardWrx.OperatingParameterManager
