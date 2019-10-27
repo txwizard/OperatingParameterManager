@@ -6,10 +6,17 @@ Within each version, classes are covered in alphabetical order when applicable.
 
 Detailed API documentation is at <https://txwizard.github.io/OperatingParameterManager/>.
 
+## Documentation Update, released 2019/10/27
+
+It just came to my attention that I neglected to configure GitHub Pages on this
+repository, which I discovered when I attempted to visit the documentation for
+my own needs. With that corrected, the online user documentation is available to
+everyone.
+
 ## Version 1.0.14, released 2019/06/30
 
 This build makes everything likely to need it as thread-safe as I know how to
-make it, while eliminating a couple of unreferenced assemblies from the lisst of
+make it, while eliminating a couple of unreferenced assemblies from the list of
 referenced assemblies for both the library and the unit test/demonstration
 program. Finally, the requirement of C# compiler version 7.3 is relaxed on the
 demonstration program, although that change is academinc, since the library must
