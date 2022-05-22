@@ -1,0 +1,294 @@
+{
+  "homepages": [],
+  "source_base_path": "D:/Source_Code/Visual_Studio/Projects/WizardWrx_Libs/OperatingParameterManager/docfx_project",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OperatingParameters_Demo.Properties.Resources.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OperatingParameters_Demo.Properties.Resources.html",
+          "hash": "oyf4MWEE/MismE/VzAqjzw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OperatingParameters_Demo.Properties.Settings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OperatingParameters_Demo.Properties.Settings.html",
+          "hash": "WiGWX8X1jgpzAyB5MYG8lg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OperatingParameters_Demo.Properties.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OperatingParameters_Demo.Properties.html",
+          "hash": "bo1AWCtCNkc2orlKnsELyw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WizardWrx.OperatingParameterManager.AppSettingsForEntryAssembly.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WizardWrx.OperatingParameterManager.AppSettingsForEntryAssembly.html",
+          "hash": "Nr4kTEZmeapwnv+fru5sgA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WizardWrx.OperatingParameterManager.OperatingParameter-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WizardWrx.OperatingParameterManager.OperatingParameter-2.html",
+          "hash": "YW/dRqe4C1GSMEvtfNX5Ag=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WizardWrx.OperatingParameterManager.OperatingParameterBase-2.ParameterState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WizardWrx.OperatingParameterManager.OperatingParameterBase-2.ParameterState.html",
+          "hash": "/Mkj1oTMElnx95b6qrEj2g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WizardWrx.OperatingParameterManager.OperatingParameterBase-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WizardWrx.OperatingParameterManager.OperatingParameterBase-2.html",
+          "hash": "YwbVolMqHeL0k/otuIfmRw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WizardWrx.OperatingParameterManager.OperatingParametersCollection-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WizardWrx.OperatingParameterManager.OperatingParametersCollection-2.html",
+          "hash": "rP170tvKqleron7F6kbF8A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WizardWrx.OperatingParameterManager.ParameterSource.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WizardWrx.OperatingParameterManager.ParameterSource.html",
+          "hash": "P8aFvmzP9b3um4iDBG9UvA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WizardWrx.OperatingParameterManager.ParameterType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WizardWrx.OperatingParameterManager.ParameterType.html",
+          "hash": "AnleLfOb66TVOTvBgvBxLg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WizardWrx.OperatingParameterManager.ParameterTypeInfo-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WizardWrx.OperatingParameterManager.ParameterTypeInfo-1.html",
+          "hash": "b7im1Q5pss+HomgZgJCgPw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WizardWrx.OperatingParameterManager.Utl.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WizardWrx.OperatingParameterManager.Utl.html",
+          "hash": "1ThSHLE/2W0c07J2Hej1eg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/WizardWrx.OperatingParameterManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WizardWrx.OperatingParameterManager.html",
+          "hash": "UgwobxYCV+QLo+19DpVzsQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "gtglzXkuSw5axqsGOu80Jg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "fECHiDrt6lzPnF5UlGCUqg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/intro.html",
+          "hash": "jnCO6T1fWYPJwvCxW3Se/w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html",
+          "hash": "gB8AESyvNru97tzIZofEEg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index(0).md",
+      "output": {
+        ".html": {
+          "relative_path": "index(0).html",
+          "hash": "boFqIVX3Iowp/yMYuqtHMw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "v1DnuYfH0kt5nZ1zjWGtrg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "G2AoE5T/2VarbHvzLEo4TQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": true,
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 4,
+          "skipped_file_count": 4
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 13,
+          "skipped_file_count": 13
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

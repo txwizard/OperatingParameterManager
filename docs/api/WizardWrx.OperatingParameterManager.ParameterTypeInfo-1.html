@@ -1,0 +1,322 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class ParameterTypeInfo&lt;T&gt;
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class ParameterTypeInfo&lt;T&gt;
+   ">
+    <meta name="generator" content="docfx 2.56.6.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="WizardWrx.OperatingParameterManager.ParameterTypeInfo`1">
+  
+  
+  <h1 id="WizardWrx_OperatingParameterManager_ParameterTypeInfo_1" data-uid="WizardWrx.OperatingParameterManager.ParameterTypeInfo`1" class="text-break">Class ParameterTypeInfo&lt;T&gt;
+  </h1>
+  <div class="markdown level0 summary"><p>This class maps the columns of a table of parameter type properties and
+their values to the properties of an instance of itself. The properties
+of a set of parameters are expected to be read into instances of this
+class, one instance per row, from an input file, with the objective of
+making addition of parameters easier by storing their basic attributes
+in a file, which may exist either as a text file in the file system or
+an embedded resource in the application assembly.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">ParameterTypeInfo&lt;T&gt;</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="WizardWrx.OperatingParameterManager.html">WizardWrx.OperatingParameterManager</a></h6>
+  <h6><strong>Assembly</strong>: WizardWrx.OperatingParameterManager.dll</h6>
+  <h5 id="WizardWrx_OperatingParameterManager_ParameterTypeInfo_1_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class ParameterTypeInfo&lt;T&gt;
+    where T : Enum</code></pre>
+  </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>Type T is expected to be an enumeration that corresponds to the rules
+for evaluating parameters (e. g., the parameter must be the name of an
+existing file, the paraameter must be a valid file name, but the file
+must not exist, the parameter must be the name of an existing directory.</p>
+<p>All constructors MUST specify the same type of enumeration, as must
+the OperatingParametersCollection class and the OperatingParameters
+that go into it. Otherwise, the behavior of the OperatingParameters
+collection and its members is undefined.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/txwizard/OperatingParameterManager/new/master/apiSpec/new?filename=WizardWrx_OperatingParameterManager_ParameterTypeInfo_1__ctor_System_String_System_String_.md&amp;value=---%0Auid%3A%20WizardWrx.OperatingParameterManager.ParameterTypeInfo%601.%23ctor(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/txwizard/OperatingParameterManager/blob/master/OperatingParameterManager/ParameterTypeInfo.cs/#L188">View Source</a>
+  </span>
+  <a id="WizardWrx_OperatingParameterManager_ParameterTypeInfo_1__ctor_" data-uid="WizardWrx.OperatingParameterManager.ParameterTypeInfo`1.#ctor*"></a>
+  <h4 id="WizardWrx_OperatingParameterManager_ParameterTypeInfo_1__ctor_System_String_System_String_" data-uid="WizardWrx.OperatingParameterManager.ParameterTypeInfo`1.#ctor(System.String,System.String)">ParameterTypeInfo(String, String)</h4>
+  <div class="markdown level1 summary"><p>The public constructor requires the calling routine to supply the
+values of a label row and the corresponding details in the form of a
+pair of well-formed TAB delimited strings.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ParameterTypeInfo(string pstrParameterInfoDetail, string pastrParameterInfoColumnNames)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">pstrParameterInfoDetail</span></td>
+        <td><p>Supply a TAB delimited string that contains a field (column) for
+each property named in the pastrParameterInfoColumnNames string.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">pastrParameterInfoColumnNames</span></td>
+        <td><p>Specify a TAB delimited string that names the columns (properties)
+of the parameter that are specified in the pstrParameterInfoDetail
+string that accompanies it.</p>
+<p>This parameter is processed once only, the first time an application
+calls the constructor. The string is parsed into a static array of
+strings that is visible to all instances in the application. Though
+subsequent instances may supply the same or different values, even a
+null reference or the empty string, subsequent constructions ignore
+this parameter, since the object knows that it is already populated.</p>
+<p>Currently, only two properties are supported.</p>
+<ol>
+<li><p>InternalName is the name by which the parameter is identified by
+the code; it is expected to correspond to the name of a command line
+argument, application setting, or both. Instances do not verify that
+InternalName values are unique; that is the responsbility of the
+calling routine.</p>
+</li>
+<li><p>ParamType is expected to correspond to a valid value of generic
+type T. Values are parsed, and invalid values cause an exception to
+be thrown, since such an error is the result of a misconfigured or
+corrupted application installation.</p>
+</li>
+</ol>
+<p>InternalName and ParamType may be specified in any order, so long as
+the order is consistent across all instances.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/txwizard/OperatingParameterManager/new/master/apiSpec/new?filename=WizardWrx_OperatingParameterManager_ParameterTypeInfo_1_ParameterName.md&amp;value=---%0Auid%3A%20WizardWrx.OperatingParameterManager.ParameterTypeInfo%601.ParameterName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/txwizard/OperatingParameterManager/blob/master/OperatingParameterManager/ParameterTypeInfo.cs/#L274">View Source</a>
+  </span>
+  <a id="WizardWrx_OperatingParameterManager_ParameterTypeInfo_1_ParameterName_" data-uid="WizardWrx.OperatingParameterManager.ParameterTypeInfo`1.ParameterName*"></a>
+  <h4 id="WizardWrx_OperatingParameterManager_ParameterTypeInfo_1_ParameterName" data-uid="WizardWrx.OperatingParameterManager.ParameterTypeInfo`1.ParameterName">ParameterName</h4>
+  <div class="markdown level1 summary"><p>The read-only ParameterName property returns the parameter name that
+was passed into the constructor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ParameterName { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/txwizard/OperatingParameterManager/new/master/apiSpec/new?filename=WizardWrx_OperatingParameterManager_ParameterTypeInfo_1_ParameterType.md&amp;value=---%0Auid%3A%20WizardWrx.OperatingParameterManager.ParameterTypeInfo%601.ParameterType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/txwizard/OperatingParameterManager/blob/master/OperatingParameterManager/ParameterTypeInfo.cs/#L281">View Source</a>
+  </span>
+  <a id="WizardWrx_OperatingParameterManager_ParameterTypeInfo_1_ParameterType_" data-uid="WizardWrx.OperatingParameterManager.ParameterTypeInfo`1.ParameterType*"></a>
+  <h4 id="WizardWrx_OperatingParameterManager_ParameterTypeInfo_1_ParameterType" data-uid="WizardWrx.OperatingParameterManager.ParameterTypeInfo`1.ParameterType">ParameterType</h4>
+  <div class="markdown level1 summary"><p>The read-only ParameterType property returns the enumerated
+parameter type value that was parsed from the string that was passed
+into the constructor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public T ParameterType { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/txwizard/OperatingParameterManager/new/master/apiSpec/new?filename=WizardWrx_OperatingParameterManager_ParameterTypeInfo_1.md&amp;value=---%0Auid%3A%20WizardWrx.OperatingParameterManager.ParameterTypeInfo%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/txwizard/OperatingParameterManager/blob/master/OperatingParameterManager/ParameterTypeInfo.cs/#L141" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

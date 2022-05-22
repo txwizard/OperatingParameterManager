@@ -6,6 +6,12 @@ Within each version, classes are covered in alphabetical order when applicable.
 
 Detailed API documentation is at <https://txwizard.github.io/OperatingParameterManager/>.
 
+## Version 1.0.28, released 2022/05/21
+
+This update is composed entirely of changes in the NuGet package configuration
+that are intended to ensure that the package advertises its immediate
+dependencies.
+
 ## Documentation Update, released 2019/10/27
 
 It just came to my attention that I neglected to configure GitHub Pages on this

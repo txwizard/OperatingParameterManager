@@ -10,13 +10,12 @@
     	<projectUrl>https://github.com/txwizard/OperatingParameterManager</projectUrl>
 	    <requireLicenseAcceptance>true</requireLicenseAcceptance>
     	<description>$description$</description>
-	    <releaseNotes>This is the first release of the WizardWrx.OperatingParameterManager NuGet package. This release is substantially the same as the package that was release with the CodeProject article. Apart from improved thread safety, the two are functionally identical. The library included herein is backwards compatible with the version that is attached to the article.</releaseNotes>
+	    <releaseNotes>This update is composed entirely of changes in the NuGet package configuration that are intended to ensure that the package advertises its immediate dependencies.</releaseNotes>
     	<copyright>$copyright$</copyright>
-    	<tags>Data-driven CommandLine Argument_Parser</tags>
+    	<tags>Data-driven CommandLine Argument Parser</tags>
 	</metadata>
 	<files>
-   		<file src="readme.md" target="" />
-   		<file src="readme.txt" target="" />
+   		<file src="..\readme.md" target="" />
    		<file src="bin\$configuration$\$id$.pdb" target="lib" />
    		<file src="bin\$configuration$\$id$.xml" target="lib" />
 	</files>

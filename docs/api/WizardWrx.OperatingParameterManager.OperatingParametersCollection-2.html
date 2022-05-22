@@ -1,0 +1,475 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class OperatingParametersCollection&lt;T, U&gt;
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class OperatingParametersCollection&lt;T, U&gt;
+   ">
+    <meta name="generator" content="docfx 2.56.6.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="WizardWrx.OperatingParameterManager.OperatingParametersCollection`2">
+  
+  
+  <h1 id="WizardWrx_OperatingParameterManager_OperatingParametersCollection_2" data-uid="WizardWrx.OperatingParameterManager.OperatingParametersCollection`2" class="text-break">Class OperatingParametersCollection&lt;T, U&gt;
+  </h1>
+  <div class="markdown level0 summary"><p>This class defines a collection of OperatingParameters objects that are
+stored in a generic Dictionary that is keyed by the name of each
+parameter.</p>
+<p>The idea behind the collection is that parameters are loaded into it,
+validated, and subsequently called forth as needeed by the program,
+providing thereby an easily extensible in-memory store for the program's
+operating parameters.</p>
+<p>Since an application needs at most one collection of operating
+parameters, this object is implemented as a Singleton, so that your
+program isn't littered with multiple copies of its parameters, nor does
+it waste time processing them more than once.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">WizardWrx.GenericSingletonBase</span>&lt;<a class="xref" href="WizardWrx.OperatingParameterManager.OperatingParametersCollection-2.html">OperatingParametersCollection</a>&lt;T, U&gt;&gt;</div>
+    <div class="level2"><span class="xref">OperatingParametersCollection&lt;T, U&gt;</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">WizardWrx.GenericSingletonBase&lt;WizardWrx.OperatingParameterManager.OperatingParametersCollection&lt;T, U&gt;&gt;.s_genTheOnlyInstance</span>
+    </div>
+    <div>
+      <span class="xref">WizardWrx.GenericSingletonBase&lt;WizardWrx.OperatingParameterManager.OperatingParametersCollection&lt;T, U&gt;&gt;.GetTheSingleInstance()</span>
+    </div>
+    <div>
+      <span class="xref">WizardWrx.GenericSingletonBase&lt;WizardWrx.OperatingParameterManager.OperatingParametersCollection&lt;T, U&gt;&gt;.TheOnlyInstance</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="WizardWrx.OperatingParameterManager.html">WizardWrx.OperatingParameterManager</a></h6>
+  <h6><strong>Assembly</strong>: WizardWrx.OperatingParameterManager.dll</h6>
+  <h5 id="WizardWrx_OperatingParameterManager_OperatingParametersCollection_2_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class OperatingParametersCollection&lt;T, U&gt; : GenericSingletonBase&lt;OperatingParametersCollection&lt;T, U&gt;&gt; where T : Enum where U : Enum</code></pre>
+  </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>Type T is expected to be an enumeration that corresponds to the rules
+for evaluating parameters (e. g., the parameter must be the name of an
+existing file, the paraameter must be a valid file name, but the file
+must not exist, the parameter must be the name of an existing directory.</p>
+<p>All ParameterTypeInfo constructors MUST specify the same type of
+enumeration, as must the OperatingParameters that go into it. Otherwise,
+the behavior of the OperatingParameters collection and its members is
+undefined.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">U</span></td>
+        <td><p>Type U is expected to be an emumeration that corresponds to the source
+from which the parameter's value originated. This is used internally to
+identify the source, e. g., ApplicationSettings or CommandLine, for
+reporting purposes and for preserving a default value read from one
+source, and overridden by a second source.</p>
+<p>The OperatingParameters objects that go into it MUST specify the
+same generic type. Otherwise, the behavior of this OperatingParameters
+collection and its members is undefined.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/txwizard/OperatingParameterManager/new/master/apiSpec/new?filename=WizardWrx_OperatingParameterManager_OperatingParametersCollection_2_GetCount.md&amp;value=---%0Auid%3A%20WizardWrx.OperatingParameterManager.OperatingParametersCollection%602.GetCount%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/txwizard/OperatingParameterManager/blob/master/OperatingParameterManager/OperatingParametersCollection.cs/#L337">View Source</a>
+  </span>
+  <a id="WizardWrx_OperatingParameterManager_OperatingParametersCollection_2_GetCount_" data-uid="WizardWrx.OperatingParameterManager.OperatingParametersCollection`2.GetCount*"></a>
+  <h4 id="WizardWrx_OperatingParameterManager_OperatingParametersCollection_2_GetCount" data-uid="WizardWrx.OperatingParameterManager.OperatingParametersCollection`2.GetCount">GetCount()</h4>
+  <div class="markdown level1 summary"><p>Call this method to get a count of OperatingParameter objects in the
+collection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetCount()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>For a fully initialized instance, the return value is the count of
+OperatingParameter objects in the collection.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/txwizard/OperatingParameterManager/new/master/apiSpec/new?filename=WizardWrx_OperatingParameterManager_OperatingParametersCollection_2_GetParameterByName_System_String_.md&amp;value=---%0Auid%3A%20WizardWrx.OperatingParameterManager.OperatingParametersCollection%602.GetParameterByName(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/txwizard/OperatingParameterManager/blob/master/OperatingParameterManager/OperatingParametersCollection.cs/#L363">View Source</a>
+  </span>
+  <a id="WizardWrx_OperatingParameterManager_OperatingParametersCollection_2_GetParameterByName_" data-uid="WizardWrx.OperatingParameterManager.OperatingParametersCollection`2.GetParameterByName*"></a>
+  <h4 id="WizardWrx_OperatingParameterManager_OperatingParametersCollection_2_GetParameterByName_System_String_" data-uid="WizardWrx.OperatingParameterManager.OperatingParametersCollection`2.GetParameterByName(System.String)">GetParameterByName(String)</h4>
+  <div class="markdown level1 summary"><p>Call this method to return a reference to a named OperatingParameter
+object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public OperatingParameter&lt;T, U&gt; GetParameterByName(string pstrParameterName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">pstrParameterName</span></td>
+        <td><p>Specify the internal name of the parameter for which the
+OperatingParameter object is required.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="WizardWrx.OperatingParameterManager.OperatingParameter-2.html">OperatingParameter</a>&lt;T, U&gt;</td>
+        <td><p>If it succeeds, the return value is the initialized OperatingParameter
+object that repressents its value and status (validated or not).
+Otherwise, an ArgumentException arises.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentException</span></td>
+        <td><p>An ArgumentException arises when pstrParameterName is an invalid
+parameter name.</p>
+<p>Correct code should never throw this exception.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/txwizard/OperatingParameterManager/new/master/apiSpec/new?filename=WizardWrx_OperatingParameterManager_OperatingParametersCollection_2_GetParameterNames.md&amp;value=---%0Auid%3A%20WizardWrx.OperatingParameterManager.OperatingParametersCollection%602.GetParameterNames%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/txwizard/OperatingParameterManager/blob/master/OperatingParameterManager/OperatingParametersCollection.cs/#L392">View Source</a>
+  </span>
+  <a id="WizardWrx_OperatingParameterManager_OperatingParametersCollection_2_GetParameterNames_" data-uid="WizardWrx.OperatingParameterManager.OperatingParametersCollection`2.GetParameterNames*"></a>
+  <h4 id="WizardWrx_OperatingParameterManager_OperatingParametersCollection_2_GetParameterNames" data-uid="WizardWrx.OperatingParameterManager.OperatingParametersCollection`2.GetParameterNames">GetParameterNames()</h4>
+  <div class="markdown level1 summary"><p>Call this method to get a list of the valid parameter names. This is
+useful for pupulating the list of valid parameters in a command line
+argument parser, such as, for example, a CmdLneArgsBasic instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string[] GetParameterNames()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><p>If it succeeds, the return value is an array of string, each of
+which is the internal name of a parameter. Otherwise, the return
+value is a null reference, and the calling routine should abort.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/txwizard/OperatingParameterManager/new/master/apiSpec/new?filename=WizardWrx_OperatingParameterManager_OperatingParametersCollection_2_GetTheSingleInstance_System_Configuration_SettingsPropertyCollection_System_String__1_.md&amp;value=---%0Auid%3A%20WizardWrx.OperatingParameterManager.OperatingParametersCollection%602.GetTheSingleInstance(System.Configuration.SettingsPropertyCollection%2CSystem.String%2C%601)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/txwizard/OperatingParameterManager/blob/master/OperatingParameterManager/OperatingParametersCollection.cs/#L252">View Source</a>
+  </span>
+  <a id="WizardWrx_OperatingParameterManager_OperatingParametersCollection_2_GetTheSingleInstance_" data-uid="WizardWrx.OperatingParameterManager.OperatingParametersCollection`2.GetTheSingleInstance*"></a>
+  <h4 id="WizardWrx_OperatingParameterManager_OperatingParametersCollection_2_GetTheSingleInstance_System_Configuration_SettingsPropertyCollection_System_String__1_" data-uid="WizardWrx.OperatingParameterManager.OperatingParametersCollection`2.GetTheSingleInstance(System.Configuration.SettingsPropertyCollection,System.String,`1)">GetTheSingleInstance(SettingsPropertyCollection, String, U)</h4>
+  <div class="markdown level1 summary"><p>Access to the single instance is gated through this method, which is
+called as needed to get references, so that the parameters need not
+be passed around or stored in a global variable.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static OperatingParametersCollection&lt;T, U&gt; GetTheSingleInstance(SettingsPropertyCollection psettingsPropertyValueCollection, string pstrDisplayNameTemplate, U penmDefaultParameterSource)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Configuration.SettingsPropertyCollection</span></td>
+        <td><span class="parametername">psettingsPropertyValueCollection</span></td>
+        <td><p>Pass a reference to a System.Configuration.SettingsPropertyCollection
+collection from which to obtain default values.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">pstrDisplayNameTemplate</span></td>
+        <td><p>This paramter specifies a template from which to construct the name
+of a managed string resource in the calling assembly to use as the
+display name. If no such string exists, the InternalName property is
+the display name. Likewise, if this string is a null reference or
+the empty string, the InternalName property is the display name.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">U</span></td>
+        <td><span class="parametername">penmDefaultParameterSource</span></td>
+        <td><p>Specify the member of the ParameterSource, generic type U,
+enumeration with which to mark the object if the ApplicationSettings
+collection includes a default value.</p>
+<p>Please <a class="xref" href="WizardWrx.OperatingParameterManager.OperatingParametersCollection-2.html">OperatingParametersCollection&lt;T, U&gt;</a> for more
+details.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="WizardWrx.OperatingParameterManager.OperatingParametersCollection-2.html">OperatingParametersCollection</a>&lt;T, U&gt;</td>
+        <td><p>Unless something causes it to fail, the return value is reference to
+a fully initialized object, ready to be loaded with parameters.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/txwizard/OperatingParameterManager/new/master/apiSpec/new?filename=WizardWrx_OperatingParameterManager_OperatingParametersCollection_2_SetFromCommandLineArguments_WizardWrx_Core_CmdLneArgsBasic__1_.md&amp;value=---%0Auid%3A%20WizardWrx.OperatingParameterManager.OperatingParametersCollection%602.SetFromCommandLineArguments(WizardWrx.Core.CmdLneArgsBasic%2C%601)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/txwizard/OperatingParameterManager/blob/master/OperatingParameterManager/OperatingParametersCollection.cs/#L428">View Source</a>
+  </span>
+  <a id="WizardWrx_OperatingParameterManager_OperatingParametersCollection_2_SetFromCommandLineArguments_" data-uid="WizardWrx.OperatingParameterManager.OperatingParametersCollection`2.SetFromCommandLineArguments*"></a>
+  <h4 id="WizardWrx_OperatingParameterManager_OperatingParametersCollection_2_SetFromCommandLineArguments_WizardWrx_Core_CmdLneArgsBasic__1_" data-uid="WizardWrx.OperatingParameterManager.OperatingParametersCollection`2.SetFromCommandLineArguments(WizardWrx.Core.CmdLneArgsBasic,`1)">SetFromCommandLineArguments(CmdLneArgsBasic, U)</h4>
+  <div class="markdown level1 summary"><p>Set the parameter values from an initialized CmdLneArgsBasic object,
+overriding any that were initialized from the Application Settings.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetFromCommandLineArguments(CmdLneArgsBasic pcmdArgs, U penmParameterSource)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">WizardWrx.Core.CmdLneArgsBasic</span></td>
+        <td><span class="parametername">pcmdArgs</span></td>
+        <td><p>Pass in a reference to a CmdLneArgsBasic object that was initialized
+from the string array returned by the GetParameterNames method.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">U</span></td>
+        <td><span class="parametername">penmParameterSource</span></td>
+        <td><p>Specify the member of the ParameterSource, generic type U,
+enumeration with which to mark the object if the CmdLneArgsBasic
+object includes a value.</p>
+<p>Please <a class="xref" href="WizardWrx.OperatingParameterManager.OperatingParametersCollection-2.html">OperatingParametersCollection&lt;T, U&gt;</a> for more
+details.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/txwizard/OperatingParameterManager/new/master/apiSpec/new?filename=WizardWrx_OperatingParameterManager_OperatingParametersCollection_2.md&amp;value=---%0Auid%3A%20WizardWrx.OperatingParameterManager.OperatingParametersCollection%602%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/txwizard/OperatingParameterManager/blob/master/OperatingParameterManager/OperatingParametersCollection.cs/#L121" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
